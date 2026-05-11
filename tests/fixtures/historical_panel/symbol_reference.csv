@@ -1,0 +1,3 @@
+symbol,asset_type,exchange,currency,sector,is_tradable
+AAA,COMMON_STOCK,XLON,GBP,Technology,true
+BBB,ETF,XLON,GBP,Index,true

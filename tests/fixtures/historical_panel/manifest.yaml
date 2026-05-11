@@ -1,0 +1,28 @@
+panel_id: tiny-historical-panel-v1
+schema_version: "1.0"
+created_at: "2026-04-30T09:30:00"
+description: Tiny prepared panel for historical panel contract tests.
+base_path: "."
+calendar: WEEKDAY
+timezone: Europe/London
+start_session: "2026-04-20"
+end_session: "2026-04-28"
+expected_symbol_count: 2
+expected_session_count: 7
+files:
+  ohlcv:
+    path: ohlcv.csv
+    format: csv
+    row_count: 14
+  symbol_reference:
+    path: symbol_reference.csv
+    format: csv
+    row_count: 2
+  corporate_actions:
+    path: corporate_actions.csv
+    format: csv
+    row_count: 2
+  earnings_events:
+    path: earnings_events.csv
+    format: csv
+    row_count: 2
