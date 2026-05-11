@@ -24,6 +24,14 @@
 - `.env` strategy behavior would undermine reproducibility and should remain prohibited.
 - Absolute local paths in config may not be portable.
 
+## Local Sync / Checkout Warning
+
+- GitHub `main` has the accepted squash-merged governance/setup baseline from PR #1.
+- Local `main` may still contain the pre-squash commits `5082e91`, `df27534`, and `e560a62`.
+- `README.md` and broad untracked baseline files may remain local and must be preserved until separately reviewed.
+- Do not run `reset`, `clean`, `pull`, `checkout`/`switch`, or sync commands unless a specific bounded sync task authorizes them.
+- Treat local sync, README cleanup, dirty-worktree cleanup, and untracked baseline-file decisions as separate future tasks.
+
 ## Data/API risks
 
 - Broad Hugging Face data does not currently support like-for-like validation against the broad Alpaca window.
