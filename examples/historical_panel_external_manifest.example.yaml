@@ -1,0 +1,39 @@
+panel_id: external-prepared-panel-example
+schema_version: "1.0"
+created_at: "2026-04-30T00:00:00"
+description: Example manifest for an external prepared historical panel with optional features.
+base_path: "/absolute/path/to/prepared_data/historical_panel"
+calendar: WEEKDAY
+timezone: Europe/London
+start_session: "2020-01-01"
+end_session: "2026-04-30"
+feature_start_session: "2021-01-01"
+feature_coverage_scope: tradable_reference
+expected_symbol_count: 0
+expected_session_count: 0
+files:
+  ohlcv:
+    path: ohlcv.parquet
+    format: parquet
+    row_count: 0
+    sha256: "<64-character-sha256>"
+  symbol_reference:
+    path: symbol_reference.parquet
+    format: parquet
+    row_count: 0
+    sha256: "<64-character-sha256>"
+  corporate_actions:
+    path: corporate_actions.parquet
+    format: parquet
+    row_count: 0
+    sha256: "<64-character-sha256>"
+  earnings_events:
+    path: earnings_events.parquet
+    format: parquet
+    row_count: 0
+    sha256: "<64-character-sha256>"
+  features:
+    path: features.parquet
+    format: parquet
+    row_count: 0
+    sha256: "<64-character-sha256>"

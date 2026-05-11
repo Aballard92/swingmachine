@@ -1,0 +1,21 @@
+as_of: "2026-04-24T16:05:00"
+regime_state: RISK_ON
+equity: 100000.0
+last_data_at: "2026-04-24T16:04:00"
+expires_at: "2026-04-25T16:00:00"
+setups:
+  - symbol: AAA
+    session_date: "2026-04-23"
+    pattern_type: PULLBACK
+    setup_id: setup-example-aaa-20260423
+    setup_start_date: "2026-04-18"
+    setup_end_date: "2026-04-23"
+    setup_high: 100.0
+    setup_low: 94.0
+    setup_high_date: "2026-04-18"
+    setup_low_date: "2026-04-22"
+    entry_trigger: 100.2
+    entry_limit: 101.7
+    initial_stop: 93.8
+    per_share_risk: 6.4
+    spent: false
