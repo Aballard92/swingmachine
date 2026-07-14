@@ -1,0 +1,81 @@
+{
+  "delivery_os": {
+    "commit": "354d03f71e0186aaf1a19d842cf06f9c433e28b2",
+    "version": "1.0.0"
+  },
+  "files": [
+    {
+      "path": "GOVERNANCE.md",
+      "sha256": "1aee53f44160732d3c431f674a9f2d23baa2463e5d3808983f498efdd65b90d3"
+    },
+    {
+      "path": "VERSION",
+      "sha256": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03"
+    },
+    {
+      "path": "deliveryos_conformance.py",
+      "sha256": "7463100cf707a6b7bef1c476cabc7f3f68f553a8448e7f778183ba33d67e982d"
+    },
+    {
+      "path": "docs/01-north-star-and-mvp.md",
+      "sha256": "0c90b9b64c4d15425bd30a11f792a89703203fc82ce6ade487ee742e508c3458"
+    },
+    {
+      "path": "docs/02-roles-and-authority.md",
+      "sha256": "f63dda248a0493f2c5e78dfe6cfd2f47197298283a83fa0643a205287fdbef5a"
+    },
+    {
+      "path": "docs/03-feature-and-backlog-model.md",
+      "sha256": "876baab9741a7ce44f2b8662b8c15a6f467f44dfd3efa821106b4f3c7f08a0b0"
+    },
+    {
+      "path": "docs/04-issue-as-contract.md",
+      "sha256": "c65a7828a80ac8f94c968c9f136b21507f6800516f0701cd30a86f0be2f5607c"
+    },
+    {
+      "path": "docs/05-goal-and-handover.md",
+      "sha256": "7ca561e88ba5523042e4080d152a2f3a31f960cbbf37fe64c3c9cd2ac57b5afe"
+    },
+    {
+      "path": "docs/06-review-and-change-control.md",
+      "sha256": "55b5f996fc07919b78b726d7914cd5035431457707eb6e607cd31febf037d223"
+    },
+    {
+      "path": "docs/07-risk-permissions-and-evidence.md",
+      "sha256": "b8c12d46cd0cc8bff994abbf0f5b98fef5188af9f762b3dd5eb1fbfbf64b2608"
+    },
+    {
+      "path": "docs/08-adoption-and-versioning.md",
+      "sha256": "9f7e429a3e10f23280a63a44390e414a34eb3dc5ce2d6e18522f6081ca156ae8"
+    },
+    {
+      "path": "pinned-core-files.json",
+      "sha256": "25492cd811cb84b5d2dc4c79db43509ac7938638a67ae878ca979a7da10fc02b"
+    },
+    {
+      "path": "schemas/feature-contract.schema.json",
+      "sha256": "b6070a7e4bacf157bfe78e9e75811c1f4c0fb32eae1616b3059729035922b6c6"
+    },
+    {
+      "path": "schemas/project-manifest.schema.json",
+      "sha256": "a560dc9f9870eb536efdf47d4ff399016a6cd62de88228d1a04ea62f43f09ccf"
+    },
+    {
+      "path": "templates/goal.md",
+      "sha256": "bf660dde3a3f82c2901637670cd718c1aaf588bb3a89e4ed0b5c29d50adb6fc2"
+    },
+    {
+      "path": "templates/merge.md",
+      "sha256": "ae0937c273dbe85474b506c023959dea5bacf6c7af8b8d1e55265d5922cecfaa"
+    },
+    {
+      "path": "templates/project-overlay.yml",
+      "sha256": "41e23f559dd9441c5e26e702658fff1d14ac4ba711b1448d269e7ce609937ca0"
+    },
+    {
+      "path": "templates/review.md",
+      "sha256": "b4d2d9e911765837299dbf010226cb33f58e66bd568889d821318f0978c77994"
+    }
+  ],
+  "schema_version": 1
+}

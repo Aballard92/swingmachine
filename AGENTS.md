@@ -31,6 +31,13 @@ Use the current source of truth in this order:
 Generated reports may be stale and must not override current project-control gates.
 Older paper-readiness or runbook documents are not current approval.
 
+## DeliveryOS Integration
+
+- The accepted DeliveryOS pin is declared in `.delivery-os.yml`; its generated core snapshot is `.delivery-os/core/1.0.0/`; SwingMachine-specific stricter controls are in `.delivery-os/overlay.yml`.
+- DeliveryOS governs shared delivery mechanics only. This `AGENTS.md` and `docs/project-control/` remain authoritative for SwingMachine product and domain rules.
+- Local controls may tighten DeliveryOS and the stricter rule prevails. Any ambiguity or conflict is a stop condition.
+- Repository access or passing conformance never grants provider, broker, account, runtime, strategy, qualification, paper, live, merge, or release permission.
+
 ## Codex Default Permissions
 
 By default, Codex may inspect the repo and report findings.

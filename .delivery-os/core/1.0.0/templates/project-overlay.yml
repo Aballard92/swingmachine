@@ -1,0 +1,16 @@
+schema_version: 1
+project:
+  id: replace-with-project-id
+  sources_of_truth:
+    - AGENTS.md
+delivery:
+  sponsor_role: Sponsor
+  stricter_rules:
+    - Local product and domain rules remain authoritative.
+shared_rules:
+  issue_as_contract: required
+  exact_release_pin: required
+  exact_commit_pin: required
+  sponsor_acceptance: required
+  no_silent_upgrades: required
+  no_automatic_cross_repo_mutation: required
