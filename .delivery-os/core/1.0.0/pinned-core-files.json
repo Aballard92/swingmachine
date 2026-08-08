@@ -1,0 +1,20 @@
+[
+  "GOVERNANCE.md",
+  "VERSION",
+  "deliveryos_conformance.py",
+  "docs/01-north-star-and-mvp.md",
+  "docs/02-roles-and-authority.md",
+  "docs/03-feature-and-backlog-model.md",
+  "docs/04-issue-as-contract.md",
+  "docs/05-goal-and-handover.md",
+  "docs/06-review-and-change-control.md",
+  "docs/07-risk-permissions-and-evidence.md",
+  "docs/08-adoption-and-versioning.md",
+  "pinned-core-files.json",
+  "schemas/feature-contract.schema.json",
+  "schemas/project-manifest.schema.json",
+  "templates/goal.md",
+  "templates/merge.md",
+  "templates/project-overlay.yml",
+  "templates/review.md"
+]

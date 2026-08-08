@@ -47,8 +47,16 @@ Current decision state:
 - No revised baseline candidate is selected.
 - Paper trading is blocked.
 - Serious full qualification is blocked until a revised candidate is selected for offline qualification.
-- Next best work is deeper PULLBACK fill/lifecycle replay research design.
+- PULLBACK is `PARKED_INCONCLUSIVE`; it may re-enter only through separately
+  authorised genuinely new independent evidence.
+- The one authorised `SWING-PC-005A` screen stopped at Gate 0, and the separately
+  authorised `SWING-PC-006` fallback ended `NO_FAMILY_PASSES_DISCOVERY`.
+- H1 and H2 are parked, Gate 2 and the holdout remain unopened, and no further
+  strategy-screen implementation ticket is currently authorised.
 - TIGHT_BASE should be isolated from the next candidate unless explicitly redesigned and re-qualified.
+- Further broad provider/data acquisition is stopped unless a new bounded task
+  satisfies the five-part exception in
+  `10_HISTORICAL_DATA_LIMITATION_ACCEPTANCE.md`.
 
 ## Out of scope now
 

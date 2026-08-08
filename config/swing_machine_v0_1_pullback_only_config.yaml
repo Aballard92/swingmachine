@@ -1,0 +1,250 @@
+# Historical superseded research config. PULLBACK is `PARKED_INCONCLUSIVE`;
+# this file does not select a candidate or authorise a rerun, runtime, or paper action.
+
+strategy:
+  id: RF_TPC_V2
+  version: 2.1.0-pullback-only-offline
+  description: 'Offline controlled revision: PULLBACK-only candidate derived from
+    RF_TPC_V2 after broad historical diagnostics showed TIGHT_BASE underperformance.'
+  timeframe: 1D
+  signal_session: REGULAR
+  scan_schedule: POST_CLOSE
+  order_schedule: NEXT_REGULAR_SESSION
+  long_only: true
+  pyramiding_allowed: false
+data:
+  canonical_price_series:
+    chart_ohlc: SPLIT_ADJUSTED
+    return_close: TOTAL_RETURN_CLOSE_INDEX
+    execution_ohlc: RAW
+  corporate_actions:
+    adjust_for_splits: true
+    adjust_chart_ohlc_for_dividends: false
+    include_cash_dividends_in_return_index: true
+    total_return_index_base_value: 100.0
+  missing_input_policy:
+    fail_closed_on_missing_regime_inputs: true
+    fail_closed_on_missing_corporate_actions: true
+universe:
+  asset_types:
+  - COMMON_STOCK
+  - ETF
+  min_history_days: 252
+  min_price: 5.0
+  min_avg_daily_dollar_volume_20: 10000000
+  exclude_leveraged_etfs: true
+  exclude_inverse_etfs: true
+  allowed_exchanges: []
+  allowed_symbols: []
+  blocked_symbols: []
+breadth:
+  enabled: true
+  source_universe: STRATEGY_COMMON_STOCK_UNIVERSE_PIT
+  include_etfs: false
+  min_constituents: 100
+  ma_window_days: 200
+regime:
+  benchmark_symbol: SPY
+  benchmark_trend_series: SPLIT_ADJUSTED_CLOSE
+  benchmark_realized_vol_series: TOTAL_RETURN_CLOSE_INDEX
+  ma_window_days: 200
+  ma200_slope_lookback_days: 20
+  caution_min_distance_above_ma200: 0.02
+  realized_vol:
+    lookback_days: 20
+    method: ANNUALIZED_STD_LOG_RETURNS
+    caution_threshold: 0.22
+    risk_off_threshold: 0.3
+  breadth_thresholds:
+    risk_on_min_pct_above_ma200: 0.55
+    risk_off_min_pct_above_ma200: 0.4
+  panic_rebound:
+    enabled: true
+    drawdown_lookback_days: 126
+    panic_decline_threshold: -0.18
+    rebound_window_days: 20
+    rebound_return_threshold: 0.1
+    panic_realized_vol_threshold: 0.3
+  actions:
+    RISK_ON:
+      entry_enabled: true
+      size_multiplier: 1.0
+      min_candidate_score_percentile: 0.8
+      min_trend_quality: 0.45
+    CAUTION:
+      entry_enabled: true
+      size_multiplier: 0.5
+      min_candidate_score_percentile: 0.9
+      min_trend_quality: 0.6
+    RISK_OFF:
+      entry_enabled: false
+      size_multiplier: 0.0
+      min_candidate_score_percentile: 1.0
+      min_trend_quality: 1.0
+    PANIC_REBOUND:
+      entry_enabled: false
+      size_multiplier: 0.0
+      min_candidate_score_percentile: 1.0
+      min_trend_quality: 1.0
+ranking:
+  normalization: CROSS_SECTIONAL_ZSCORE
+  winsorize_lower_percentile: 0.01
+  winsorize_upper_percentile: 0.99
+  return_series: TOTAL_RETURN_CLOSE_INDEX
+  relative_strength_lookback_days: 126
+  momentum_skip_days: 21
+  trend_quality:
+    formula: LINEAR_CLAMPED_V1
+    components:
+      ma20_over_ma50_weight: 0.3
+      ma50_over_ma200_weight: 0.35
+      ma50_slope_pct20_weight: 0.2
+      ma200_slope_pct20_weight: 0.15
+    full_score_levels:
+      ma20_over_ma50: 0.08
+      ma50_over_ma200: 0.15
+      ma50_slope_pct20: 0.06
+      ma200_slope_pct20: 0.03
+  weights:
+    mom_252_21: 0.35
+    ret_126: 0.2
+    rs_vs_benchmark_126: 0.2
+    proximity_52w_high: 0.15
+    trend_quality: 0.1
+filters:
+  require_close_above_ma50: true
+  require_ma50_above_ma200: true
+  require_positive_ma200_slope: true
+  max_distance_from_52w_high: 0.1
+features:
+  moving_averages:
+  - 20
+  - 50
+  - 200
+  atr_windows:
+  - 5
+  - 14
+  - 20
+  high_lookback_days_for_52w: 252
+  pullback_anchor_lookback_days: 20
+  range_compression_ratio:
+    numerator_atr_window: 5
+    denominator_atr_window: 20
+benchmark_relative_features:
+  compute: true
+  influence_strategy_behavior: false
+  benchmark_symbol: SPY
+  relative_strength_windows:
+  - 20
+  - 50
+  - 100
+  - 126
+  acceleration_pairs:
+  - short_window: 20
+    long_window: 100
+  - short_window: 50
+    long_window: 126
+  drawdown_window: 63
+  rebound_window: 20
+setup:
+  pattern_priority:
+  - PULLBACK
+  shared_requirements:
+    max_distance_from_52w_high: 0.1
+    require_close_above_ma50: true
+    require_ma50_above_ma200: true
+    require_positive_ma200_slope: true
+  pullback:
+    min_days: 3
+    max_days: 10
+    max_depth_atr: 2.0
+    max_range_compression_ratio: 0.9
+    support_buffer_atr: 0.25
+    require_volume_dry_up: false
+    max_setup_volume_ratio: 1.0
+  tight_base:
+    min_days: 5
+    max_days: 15
+    max_base_range_atr: 3.0
+    max_base_drift_pct: 0.06
+    max_range_compression_ratio: 0.8
+  setup_registry:
+    persist_spent_setups: true
+    disallow_reuse_of_spent_setup_id: true
+entry:
+  order_type: STOP_LIMIT
+  entry_buffer_atr: 0.1
+  max_gap_above_trigger_atr: 0.75
+  order_expiry_sessions: 3
+  use_regular_session_only: true
+  enable_extended_hours: false
+  one_pending_entry_per_symbol: true
+  submission_timing: AFTER_SIGNAL_CLOSE_FOR_NEXT_REGULAR_SESSION
+  opening_print_reference: PRIMARY_EXCHANGE_OFFICIAL_OPEN
+  cancel_unfilled_order_if_open_above_limit: true
+risk:
+  risk_per_trade_pct_equity: 0.003
+  max_position_pct_equity: 0.08
+  max_sector_pct_equity: 0.2
+  max_portfolio_heat_pct_equity: 0.02
+  max_new_risk_per_day_pct_equity: 0.01
+  portfolio_vol_target_annualized: 0.15
+stops:
+  initial_stop_mode: MIN_OF_SETUP_LOW_AND_ATR_STOP
+  stop_atr_multiple: 1.8
+  setup_low_buffer_atr: 0.1
+  trailing:
+    enabled: true
+    activate_after_gain_atr: 1.0
+    trailing_atr_multiple: 2.5
+    risk_off_trailing_atr_multiple: 1.75
+  time_stop:
+    enabled: true
+    max_bars_without_progress: 10
+    min_progress_after_n_bars_atr: 0.5
+exits:
+  profit_target_enabled: false
+  allow_partial_scale_out: false
+  earnings_exit_lead_regular_closes: 1
+  earnings_exit_execution: NEXT_REGULAR_SESSION
+  regime_exit_mode: TIGHTEN_TRAILING_STOP_ONLY
+events:
+  earnings_filter_enabled: true
+  min_regular_closes_before_earnings_for_new_entry: 5
+  unknown_earnings_session_policy: TREAT_AS_ZERO_REGULAR_CLOSES
+  allow_holding_through_earnings: false
+  use_eps_surprise_overlay: false
+  use_transcript_nlp_overlay: false
+execution:
+  broker: PAPER
+  use_synthetic_brackets: true
+  deduplicate_order_intents: true
+  max_pending_orders_per_symbol: 1
+  max_open_positions_per_symbol: 1
+  cancel_stale_entries_before_new_submit: true
+  rate_limit_guard_enabled: true
+  reconcile_positions_every_minutes: 5
+  reconcile_orders_every_minutes: 1
+monitoring:
+  enable_stale_data_checks: true
+  max_data_age_seconds: 300
+  enable_slippage_alerts: true
+  slippage_alert_bps: 50
+  enable_drawdown_kill_switch: true
+  daily_drawdown_kill_switch_pct: 0.02
+  enable_reconciliation_kill_switch: true
+  enable_broker_health_kill_switch: true
+backtest:
+  signal_price_sources:
+    chart_features: SPLIT_ADJUSTED_OHLC
+    return_features: TOTAL_RETURN_CLOSE_INDEX
+    execution_model: RAW_OHLC
+  include_splits: true
+  include_cash_dividends: true
+  include_delistings: true
+  include_spread_model: true
+  include_market_impact_model: true
+  include_fx_cost_model: true
+  include_spent_setup_logic: true
+  walk_forward_enabled: true
+  pbo_analysis_enabled: true

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Aballard92/DeliveryOS/schemas/project-manifest.schema.json",
+  "title": "DeliveryOS project manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "project", "delivery_os", "overlay"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "repository"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z][a-z0-9-]{1,63}$"},
+        "repository": {"type": "string", "pattern": "^https://github\\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"}
+      }
+    },
+    "delivery_os": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["version", "commit", "source", "release_url", "snapshot", "snapshot_lock_sha256", "accepted"],
+      "properties": {
+        "version": {"type": "string", "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"},
+        "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "source": {"const": "https://github.com/Aballard92/DeliveryOS"},
+        "release_url": {"type": "string", "pattern": "^https://github\\.com/Aballard92/DeliveryOS/releases/tag/v[0-9]+\\.[0-9]+\\.[0-9]+$"},
+        "snapshot": {"type": "string", "pattern": "^\\.delivery-os/core/[A-Za-z0-9._/-]+$"},
+        "snapshot_lock_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "accepted": {"const": true}
+      }
+    },
+    "overlay": {"type": "string", "pattern": "^\\.delivery-os/[A-Za-z0-9._/-]+\\.ya?ml$"}
+  }
+}

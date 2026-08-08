@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Aballard92/DeliveryOS/schemas/feature-contract.schema.json",
+  "title": "DeliveryOS feature contract",
+  "x-deliveryos-feature-form-required": [
+    "outcome",
+    "why_now",
+    "accepted_state",
+    "scope",
+    "non_scope",
+    "architecture_and_ownership",
+    "trust_model",
+    "permissions",
+    "deliverables",
+    "acceptance_criteria",
+    "independent_tests",
+    "evidence_required",
+    "defect_policy",
+    "stop_conditions",
+    "change_control",
+    "pr_merge_policy",
+    "handover"
+  ],
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "title", "outcome", "why_now", "accepted_state", "scope", "architecture_and_ownership", "trust_model", "permissions", "deliverables", "acceptance_criteria", "independent_tests", "evidence_required", "defect_policy", "stop_conditions", "change_control", "pr_merge_policy", "handover", "sponsor", "issue_url"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "id": {"type": "string", "pattern": "^[A-Z][A-Z0-9-]{2,63}$"},
+    "title": {"type": "string", "minLength": 3},
+    "outcome": {"type": "string", "minLength": 10},
+    "why_now": {"type": "string", "minLength": 10},
+    "accepted_state": {"type": "string", "minLength": 10},
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["included", "excluded"],
+      "properties": {
+        "included": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "excluded": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "architecture_and_ownership": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "trust_model": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authorities", "evidence_limits"],
+      "properties": {
+        "authorities": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "evidence_limits": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "permissions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["allowed", "prohibited"],
+      "properties": {
+        "allowed": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "prohibited": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "deliverables": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "acceptance_criteria": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "independent_tests": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "evidence_required": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "defect_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["blocking_definition", "follow_up_hardening"],
+      "properties": {
+        "blocking_definition": {"type": "string", "minLength": 10},
+        "follow_up_hardening": {"type": "string", "minLength": 10}
+      }
+    },
+    "stop_conditions": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "change_control": {"type": "string", "minLength": 10},
+    "pr_merge_policy": {"type": "string", "minLength": 10},
+    "handover": {"type": "string", "minLength": 3},
+    "sponsor": {"type": "string", "minLength": 1},
+    "issue_url": {"type": "string", "pattern": "^https://github\\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+/issues/[1-9][0-9]*$"}
+  }
+}

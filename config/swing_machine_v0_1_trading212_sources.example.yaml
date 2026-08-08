@@ -1,0 +1,29 @@
+baseline_id: swing_machine_v0_1
+config_version: swing_machine_v0_1_trading212_sources_v1
+# Example only. Copy to the ignored non-example filename and replace the
+# placeholders only under an explicitly authorised local/provider task.
+providers:
+  - provider: alpaca
+    db_path: /absolute/local/path/to/research_alpaca_local.db
+    symbols_file: /absolute/local/path/to/universe.txt
+    output_root: data/qualification_sources/trading212/alpaca
+    preferred_timeframe: 1d
+    fallback_timeframe: 1m
+    lookback_calendar_days: 500
+    excluded_symbols:
+      - ORCL
+      - CRM
+      - BAC
+      - CVX
+  - provider: huggingface
+    db_path: /absolute/local/path/to/research_hf_local.db
+    symbols_file: /absolute/local/path/to/universe.txt
+    output_root: data/qualification_sources/trading212/huggingface
+    preferred_timeframe: 1d
+    fallback_timeframe: 1m
+    lookback_calendar_days: 500
+    excluded_symbols:
+      - ORCL
+      - CRM
+      - BAC
+      - CVX

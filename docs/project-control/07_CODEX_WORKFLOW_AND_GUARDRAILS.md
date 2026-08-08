@@ -166,9 +166,14 @@ handoff.
 - Broker/API/live commands require exact human approval.
 - No revised baseline candidate is selected.
 - Serious full qualification is blocked until a revised candidate is selected.
-- PULLBACK fill/lifecycle replay research is the current research lane.
+- PULLBACK is `PARKED_INCONCLUSIVE`; it is not the current implementation lane.
+- H1 and H2 are parked after `NO_FAMILY_PASSES_DISCOVERY`.
+- Gate 2 and the frozen holdout remain unopened.
+- No further strategy-screen implementation ticket is currently authorised.
 - TIGHT_BASE remains isolated unless explicitly redesigned and requalified.
-- Broad Hugging Face acquisition is deferred.
+- Broad provider/data acquisition is stopped unless a new bounded task satisfies
+  the five-part exception in
+  `10_HISTORICAL_DATA_LIMITATION_ACCEPTANCE.md`.
 - Alpaca is the primary broad research source for now.
 - Strategy behaviour must be explicit config/profile behaviour, not hidden `.env`
   behaviour.

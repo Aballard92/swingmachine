@@ -4,6 +4,13 @@ Audit date: 2026-05-11
 Repo path inspected: `/home/alexballard92/swingmachine`
 Task: audit-only alignment against the GitHub + ChatGPT Project + Codex operating model
 
+Current-status note, 2026-07-29: this file is a historical audit snapshot. Its
+section 8 recommendation reused `SWING-PC-003` for an unrelated governance task
+after `09_PULLBACK_FILL_LIFECYCLE_REPLAY_RESEARCH_DESIGN.md` had already reserved
+that identifier for the PULLBACK decision gate. Do not treat the audit's section 8
+ticket identity or priority as current. The current `SWING-PC-003` is
+`SWING-PC-003_pullback_lane_decision_packet.md`.
+
 ## 1. Current Repo / Project-Control Status
 
 ### Summary
@@ -58,7 +65,7 @@ These areas are explicitly risky or superseded:
 | `docs/swing_machine_v0_1_first_paper_runbook.md` | Can imply paper-run readiness. | Treat as stale/superseded unless explicitly marked blocked. |
 | `docs/swing_machine_v0_1_paper_trading_review_packet.md` | Superseded by current blocker/selection state. | Do not treat as current approval. |
 | `docs/swing_machine_v0_1_guarded_serious_full_run_plan.md` and serious-run docs | Serious full run is currently blocked until a revised candidate is selected. | Archive/context only. |
-| `SESSION_CONTINUATION.md` | Old recovery note. | Superseded by `docs/project-control/SESSION_RESTART_HANDOFF.md` and current control docs. |
+| `docs/archive/build-phase/SESSION_CONTINUATION.md` | Old recovery note. | Superseded by `docs/project-control/SESSION_RESTART_HANDOFF.md` and current control docs. |
 | `docs/BUILD_PLAN.md`, `docs/BUILD_ROADMAP.md`, `docs/SOLUTION_DESIGN_AND_DELIVERY_ROADMAP.md` | Older planning/control docs overlap with current v0.1/project-control docs. | Use current project-control docs first. |
 | `swing_trading_bot_design_spec.md`, `swing_trading_bot_config_template.yaml` | Deprecated v1 strategy spec/config. | Archive only; v2 and v0.1 docs govern current baseline. |
 | Full backlog / implementation log | Very large and mixed with completed/superseded work. | Use current project-control summaries unless forensic detail is needed. |

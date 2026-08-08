@@ -1,0 +1,13 @@
+baseline_id: swing_machine_v0_1
+# Historical/mechanical baseline alias only. No revised candidate is selected,
+# and this file does not authorise qualification, runtime, or paper execution.
+profile_alias_version: swing_machine_v0_1_profile_alias_v1
+strategy_config_path: ../swing_trading_bot_config_template_v2.yaml
+expected_strategy_id: RF_TPC_V2
+expected_strategy_version: 2.1.0
+serious_full_run_policy: PROHIBITED_UNTIL_QUALIFIED
+notes:
+  - This alias identifies the explicit historical v0.1 mechanical baseline profile.
+  - It is not a selected revised candidate or a current trading profile.
+  - The alias is not a performance variant and does not freeze the baseline by itself.
+  - Serious full runs remain prohibited until the baseline manifest/checklist is fully satisfied.

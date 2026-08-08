@@ -1,8 +1,14 @@
 # 09 PULLBACK Fill/Lifecycle Replay Research Design
 
 Ticket: `SWING-PC-001`
-Status: `DESIGN_READY_FOR_REVIEW`
+Status: `COMPLETED_HISTORICAL_DESIGN_PARKED`
 Created: 2026-05-08
+
+Current-status override, 2026-08-08: the diagnostic completed
+`INCONCLUSIVE`; `SWING-PC-003` Option A parked PULLBACK; `SWING-PC-005A`
+stopped at Gate 0; and `SWING-PC-006` ended
+`NO_FAMILY_PASSES_DISCOVERY`. This design is provenance, not current authority
+for implementation or rerun.
 
 ## Purpose
 
@@ -212,10 +218,25 @@ Prohibited recommendations:
 
 Only create this ticket if the decision packet supports profile design. The output must be a docs-only profile hypothesis with explicit exclusion of TIGHT_BASE unless separately redesigned.
 
+### Recorded outcome - 2026-07-29
+
+Alex accepted `SWING-PC-003` Option A:
+`ACCEPT_SWING_PC_003_OPTION_A_PARK_PULLBACK_V1`.
+
+- PULLBACK lane: `PARKED_INCONCLUSIVE`
+- Candidate-profile gate: not passed
+- `SWING-PC-003A` robustness appendix: not authorized
+- `SWING-PC-004` candidate-profile design: not authorized
+- Follow-on broader hypothesis research: requires a separate bounded decision
+
+The later `SWING-PC-005` authorization created a broader hypothesis-search design
+only. It does not reopen PULLBACK and does not authorize a screen or holdout
+evaluation.
+
 ## Current gate status
 
 - `paper_trading`: `BLOCKED`
 - `live_trading`: `PROHIBITED`
 - `broker_actions`: `PROHIBITED_WITHOUT_EXACT_HUMAN_APPROVAL`
 - `serious_full_qualification`: `BLOCKED_UNTIL_REVISED_CANDIDATE_SELECTED_FOR_OFFLINE_QUALIFICATION`
-- `revised_profile_build`: `BLOCKED_UNTIL_PULLBACK_RESEARCH_PACKET_AND_DECISION_GATE`
+- `revised_profile_build`: `BLOCKED_NO_SELECTED_CANDIDATE`

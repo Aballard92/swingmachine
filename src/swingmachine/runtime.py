@@ -1268,7 +1268,7 @@ def run_paper_shadow_audit_command(
     shadow_metrics = _runtime_cycle_metrics(shadow_result)
     shadow_comparison_metrics = _shadow_comparison_metrics(comparison_batch)
     shadow_summary_count = _shadow_summary_record_count(shadow_summary)
-    metrics = {
+    metrics: dict[str, object] = {
         "paper": paper_metrics,
         "shadow": shadow_metrics,
         "shadow_comparison": shadow_comparison_metrics,
@@ -1500,7 +1500,7 @@ def run_historical_scanner_replay_command(
         output_dir=output_dir,
         initial_equity=initial_equity,
     )
-    metrics = {
+    metrics: dict[str, object] = {
         "panel_id": summary.panel_id,
         "status": summary.status.value,
         "eligible_signal_session_count": summary.eligible_signal_session_count,
@@ -1592,7 +1592,7 @@ def run_historical_portfolio_lifecycle_replay_command(
         output_dir=output_dir,
         initial_equity=initial_equity,
     )
-    metrics = {
+    metrics: dict[str, object] = {
         "panel_id": package.summary.panel_id,
         "status": package.summary.status.value,
         "processed_session_count": package.summary.processed_session_count,

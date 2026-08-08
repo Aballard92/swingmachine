@@ -1,0 +1,74 @@
+baseline_id: swing_machine_v0_1
+plan_version: swing_machine_v0_1_selected_period_plan_v1
+profile_alias_path: swing_machine_v0_1_profile.yaml
+required_data_contract_version: prepared_market_and_historical_panel_v1
+run_policy: DRY_RUN_REPLAY_ONLY
+serious_full_run_policy: PROHIBITED_UNTIL_QUALIFIED
+required_artifacts:
+  - baseline_report_package.json
+  - baseline_parity_report.json
+  - freeze_readiness.json
+  - replay_summary.json
+  - qualification_checklist.json
+safety_controls:
+  - Selected-period qualification may use replay or dry-run artifact generation only.
+  - Broker submission, live trading, production deployment, and destructive database writes are prohibited.
+  - Serious full run remains prohibited unless every manifest qualification check is satisfied.
+  - Any missing data must block the selected-period period rather than being silently filled.
+periods:
+  - period_id: smoke_recent_5_sessions
+    title: Recent tiny smoke replay window
+    start_date: 2026-04-20
+    end_date: 2026-04-24
+    purpose: Prove deterministic artifact generation and baseline package emission on a small recent window before wider checks.
+    minimum_session_count: 3
+    maximum_symbol_count: 25
+    data_requirements:
+      - Adjusted daily OHLCV bars are present for every included symbol and session.
+      - The active profile hash matches the emitted baseline manifest hash.
+      - Missing-bar and stale-data decisions are recorded as rejection or blocker evidence.
+    required_artifacts:
+      - baseline_report_package.json
+      - replay_summary.json
+    acceptance_evidence:
+      - Replay completes without broker or order-submission side effects.
+      - Baseline report package has serious_full_run_allowed set to false unless all checks are satisfied.
+      - Artifact paths are deterministic for identical inputs.
+  - period_id: recent_medium_replay_window
+    title: Recent medium replay window
+    start_date: 2026-03-02
+    end_date: 2026-04-17
+    purpose: Exercise candidate, signal, risk, order, lifecycle, exit, and reporting contracts across a longer recent period.
+    minimum_session_count: 20
+    maximum_symbol_count: 150
+    data_requirements:
+      - Historical bars cover the full lookback needed by the configured indicators before the first replay session.
+      - Corporate-action-adjusted price inputs are used consistently by research and runtime paths.
+      - Universe membership evidence is available for every candidate symbol.
+    required_artifacts:
+      - baseline_report_package.json
+      - baseline_parity_report.json
+      - replay_summary.json
+    acceptance_evidence:
+      - Research/runtime package parity passes for all material baseline artifacts.
+      - Rejection reasons are present for ineligible candidates.
+      - Risk and order plans remain dry-run artifacts only.
+  - period_id: historical_contract_stability_window
+    title: Historical contract stability window
+    start_date: 2025-09-02
+    end_date: 2025-10-31
+    purpose: Check that the baseline contracts and reports remain stable on an older selected period before considering any larger qualification run.
+    minimum_session_count: 30
+    maximum_symbol_count: 150
+    data_requirements:
+      - The same feature definitions and data contract version are used as the runtime-compatible replay path.
+      - Data availability gaps are reported explicitly and block qualification if material.
+      - Baseline package and parity report schemas remain identical to the recent-window run.
+    required_artifacts:
+      - baseline_report_package.json
+      - baseline_parity_report.json
+      - qualification_checklist.json
+    acceptance_evidence:
+      - No hidden environment strategy settings are required to reproduce the period.
+      - Parity differences, if any, are field-level and reviewable.
+      - Freeze review remains blocked until the period evidence is reviewed.

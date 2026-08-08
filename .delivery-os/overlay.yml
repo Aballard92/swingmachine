@@ -1,0 +1,22 @@
+schema_version: 1
+project:
+  id: swingmachine
+  sources_of_truth:
+    - AGENTS.md
+    - docs/project-control/
+delivery:
+  sponsor_role: Sponsor
+  stricter_rules:
+    - SwingMachine remains controlled offline research and qualification only.
+    - Paper, live, broker, account, provider, API, runtime and state-changing actions require separate exact human approval.
+    - Strategy behaviour must remain explicit in reviewed config or profiles and must never change through hidden environment settings.
+    - No revised strategy profile, candidate selection, qualification progression or readiness claim is inferred from adoption or conformance.
+    - Current strategy-family isolation and qualification gates remain authoritative, including TIGHT_BASE isolation unless redesigned and requalified.
+    - Backtests are evidence only, no forced trades are allowed and no edge or profitability claim is inferred.
+shared_rules:
+  issue_as_contract: required
+  exact_release_pin: required
+  exact_commit_pin: required
+  sponsor_acceptance: required
+  no_silent_upgrades: required
+  no_automatic_cross_repo_mutation: required
