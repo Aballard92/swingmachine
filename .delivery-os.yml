@@ -1,0 +1,13 @@
+schema_version: 1
+project:
+  id: swingmachine
+  repository: https://github.com/Aballard92/swingmachine
+delivery_os:
+  version: 1.0.0
+  commit: 354d03f71e0186aaf1a19d842cf06f9c433e28b2
+  source: https://github.com/Aballard92/DeliveryOS
+  release_url: https://github.com/Aballard92/DeliveryOS/releases/tag/v1.0.0
+  snapshot: .delivery-os/core/1.0.0
+  snapshot_lock_sha256: c6a7c3a255d875eed51a1e6a7139dfc8e6460989393f55af2bf66dd3e0e14542
+  accepted: true
+overlay: .delivery-os/overlay.yml
