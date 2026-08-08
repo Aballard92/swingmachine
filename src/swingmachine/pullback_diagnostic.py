@@ -4,6 +4,7 @@ import json
 from collections import Counter
 from dataclasses import dataclass
 from datetime import UTC, date, datetime
+from hashlib import sha256
 from pathlib import Path
 from statistics import median
 from typing import Any
@@ -94,6 +95,7 @@ def build_pullback_fill_lifecycle_diagnostic(
     trade_ledger = _load_json(paths.lifecycle_trade_ledger)
     pending_orders = _load_json(paths.lifecycle_pending_orders)
     transitions = _load_json(paths.lifecycle_transitions)
+    scanner_material_decisions = _load_json(paths.scanner_material_decisions)
     root_cause = _load_json(paths.root_cause_report)
     traded_lifecycle = _load_json(paths.traded_lifecycle_report)
     pattern_benchmark = _load_json(paths.pattern_benchmark_report)
@@ -109,6 +111,12 @@ def build_pullback_fill_lifecycle_diagnostic(
     }
     pending_by_setup_id = _group_by_setup_id(pending_orders.get("pending_orders", ()))
     transitions_by_setup_id = _group_by_setup_id(transitions.get("transitions", ()))
+    scanner_by_setup_id = _scanner_rows_by_setup_id(scanner_material_decisions)
+    lifecycle_intervals = _lifecycle_intervals(
+        trade_ledger.get("trades", ()),
+        pending_orders.get("pending_orders", ()),
+        transitions.get("transitions", ()),
+    )
 
     candidates = [
         _candidate_diagnostic_row(
@@ -116,6 +124,11 @@ def build_pullback_fill_lifecycle_diagnostic(
             trade=trades_by_setup_id.get(str(row.get("setup_id"))),
             pending_orders=pending_by_setup_id.get(str(row.get("setup_id")), []),
             transitions=transitions_by_setup_id.get(str(row.get("setup_id")), []),
+            scanner_row=scanner_by_setup_id.get(str(row.get("setup_id"))),
+            overlapping_lifecycles=_overlapping_symbol_lifecycles(
+                row,
+                lifecycle_intervals,
+            ),
         )
         for row in accepted_pullback
     ]
@@ -144,6 +157,7 @@ def build_pullback_fill_lifecycle_diagnostic(
             "profile_building": "NOT_AUTHORIZED",
         },
         "source_artifacts": _source_artifacts(paths),
+        "source_artifact_sha256": _source_artifact_sha256(paths),
         "source_cross_checks": {
             "root_cause": _root_cause_summary(root_cause),
             "traded_lifecycle": _traded_lifecycle_summary(traded_lifecycle),
@@ -176,9 +190,11 @@ def build_pullback_fill_lifecycle_diagnostic(
         "candidate_rows": candidates,
         "implementation_notes": (
             "Filled/unfilled status is classified from existing trade-ledger and "
-            "pending-order artifacts. Missing fields are reported as unavailable or "
-            "derived; no target-hit, direct R multiple, or adverse-excursion values "
-            "are invented."
+            "pending-order artifacts. A no-order row is classified as not submitted "
+            "only when its signal date overlaps a different same-symbol pending or "
+            "open lifecycle; the causal interval is retained in the candidate row. "
+            "Missing fields are reported as unavailable or derived; no target-hit, "
+            "direct R multiple, or adverse-excursion values are invented."
         ),
     }
     return report
@@ -216,8 +232,14 @@ def _candidate_diagnostic_row(
     trade: dict[str, Any] | None,
     pending_orders: list[dict[str, Any]],
     transitions: list[dict[str, Any]],
+    scanner_row: dict[str, Any] | None,
+    overlapping_lifecycles: list[dict[str, Any]],
 ) -> dict[str, Any]:
-    fill_classification = _fill_classification(trade, pending_orders)
+    fill_classification = _fill_classification(
+        trade,
+        pending_orders,
+        overlapping_lifecycles,
+    )
     transition_path = [
         {
             "session_date": transition.get("session_date"),
@@ -249,6 +271,22 @@ def _candidate_diagnostic_row(
         "candidate_id": row.get("candidate_id"),
         "traded": row.get("traded") is True,
         "fill_classification": fill_classification,
+        "fill_classification_evidence": _fill_classification_evidence(
+            fill_classification
+        ),
+        "scanner_order_plan_present": bool(
+            scanner_row is not None and scanner_row.get("order_plan_id")
+        ),
+        "scanner_order_plan_id": (
+            None if scanner_row is None else scanner_row.get("order_plan_id")
+        ),
+        "scanner_risk_plan_id": (
+            None if scanner_row is None else scanner_row.get("risk_plan_id")
+        ),
+        "scanner_reason_codes": (
+            [] if scanner_row is None else scanner_row.get("reason_codes") or []
+        ),
+        "overlapping_symbol_lifecycles": overlapping_lifecycles,
         "order_statuses": [order.get("status") for order in pending_orders],
         "order_type": (filled_order or first_order).get("order_type"),
         "cancel_reasons": cancel_reasons,
@@ -293,6 +331,7 @@ def _candidate_diagnostic_row(
 def _fill_classification(
     trade: dict[str, Any] | None,
     pending_orders: list[dict[str, Any]],
+    overlapping_lifecycles: list[dict[str, Any]],
 ) -> str:
     if trade is not None:
         return "FILLED"
@@ -303,7 +342,17 @@ def _fill_classification(
         return "UNFILLED_CANCELLED"
     if pending_orders:
         return "UNKNOWN_PENDING_ORDER_EVIDENCE"
+    if overlapping_lifecycles:
+        return "NOT_SUBMITTED_EXISTING_SYMBOL_LIFECYCLE"
     return "UNKNOWN_NO_ORDER_EVIDENCE"
+
+
+def _fill_classification_evidence(classification: str) -> str:
+    if classification == "NOT_SUBMITTED_EXISTING_SYMBOL_LIFECYCLE":
+        return "DERIVED_CAUSAL_SAME_SYMBOL_LIFECYCLE_OVERLAP"
+    if classification.startswith("UNKNOWN"):
+        return "NONE_UNRESOLVED"
+    return "DIRECT_TRADE_OR_PENDING_ORDER_ARTIFACT"
 
 
 def _r_multiple(trade: dict[str, Any] | None) -> float | None:
@@ -352,17 +401,57 @@ def _population_metrics(population_id: str, rows: list[dict[str, Any]]) -> dict[
 
 def _fill_classification_summary(candidates: list[dict[str, Any]]) -> dict[str, Any]:
     counts = Counter(str(candidate["fill_classification"]) for candidate in candidates)
+    filled_count = counts.get("FILLED", 0) + counts.get(
+        "FILLED_WITH_ORDER_NO_TRADE_LEDGER_MATCH",
+        0,
+    )
+    unfilled_count = counts.get("UNFILLED_CANCELLED", 0)
+    submitted_count = (
+        filled_count
+        + unfilled_count
+        + counts.get("UNKNOWN_PENDING_ORDER_EVIDENCE", 0)
+    )
     return {
         "counts": dict(sorted(counts.items())),
-        "filled_count": counts.get("FILLED", 0)
-        + counts.get("FILLED_WITH_ORDER_NO_TRADE_LEDGER_MATCH", 0),
-        "unfilled_count": counts.get("UNFILLED_CANCELLED", 0),
+        "filled_count": filled_count,
+        "unfilled_count": unfilled_count,
+        "submitted_count": submitted_count,
+        "not_submitted_existing_symbol_lifecycle_count": counts.get(
+            "NOT_SUBMITTED_EXISTING_SYMBOL_LIFECYCLE",
+            0,
+        ),
+        "submitted_fill_rate": (
+            filled_count / submitted_count if submitted_count else None
+        ),
+        "overlap_state_counts": dict(
+            sorted(
+                Counter(
+                    overlap["state_at_candidate"]
+                    for candidate in candidates
+                    for overlap in candidate.get("overlapping_symbol_lifecycles", [])
+                    if candidate["fill_classification"]
+                    == "NOT_SUBMITTED_EXISTING_SYMBOL_LIFECYCLE"
+                ).items()
+            )
+        ),
+        "overlapping_setup_count": len(
+            {
+                overlap["setup_id"]
+                for candidate in candidates
+                for overlap in candidate.get("overlapping_symbol_lifecycles", [])
+                if candidate["fill_classification"]
+                == "NOT_SUBMITTED_EXISTING_SYMBOL_LIFECYCLE"
+            }
+        ),
         "unknown_count": counts.get("UNKNOWN_NO_ORDER_EVIDENCE", 0)
         + counts.get("UNKNOWN_PENDING_ORDER_EVIDENCE", 0),
         "classification_policy": (
             "FILLED requires a trade-ledger match or filled pending order. "
-            "UNFILLED_CANCELLED requires cancelled order evidence. Rows without order "
-            "or trade evidence are marked UNKNOWN, not inferred."
+            "UNFILLED_CANCELLED requires cancelled order evidence. "
+            "NOT_SUBMITTED_EXISTING_SYMBOL_LIFECYCLE is derived only when the "
+            "candidate signal date falls inside another same-symbol pending or open "
+            "lifecycle; the overlapping setup and interval are retained. Remaining "
+            "rows without evidence stay UNKNOWN."
         ),
     }
 
@@ -523,6 +612,16 @@ def _sample_warnings(candidates: list[dict[str, Any]]) -> list[str]:
                 f"accepted PULLBACK sample is concentrated: {top_symbol} is {top_count}/"
                 f"{len(candidates)} rows"
             )
+    overlap_count = sum(
+        candidate["fill_classification"]
+        == "NOT_SUBMITTED_EXISTING_SYMBOL_LIFECYCLE"
+        for candidate in candidates
+    )
+    if overlap_count:
+        warnings.append(
+            f"{overlap_count}/{len(candidates)} accepted PULLBACK rows overlap an "
+            "existing same-symbol lifecycle and are not independent order submissions"
+        )
     warnings.append("backtests and diagnostics are evidence, not proof")
     warnings.append("diagnostic verdict does not authorize paper/live/broker actions")
     return warnings
@@ -532,10 +631,11 @@ def _missing_fields_table() -> list[dict[str, str]]:
     return [
         {
             "field": "filled",
-            "status": "PARTIAL",
+            "status": "PARTIAL_DERIVED",
             "handling": (
-                "Classified by joining trade ledger and pending orders; ambiguous rows "
-                "stay UNKNOWN."
+                "Classified from trade ledger and pending orders. No-order rows are "
+                "classified as not submitted only when a causal same-symbol lifecycle "
+                "overlap is present; remaining ambiguous rows stay UNKNOWN."
             ),
         },
         {
@@ -592,6 +692,14 @@ def _diagnostic_verdict(
         reasons.append("filled/traded PULLBACK sample remains below 5 trades")
     if traded_excess_20 is not None and traded_excess_20 > 0.0 and filled_count > 0:
         reasons.append("filled/traded subset is directionally positive but too small")
+    suppressed_count = fill_summary[
+        "not_submitted_existing_symbol_lifecycle_count"
+    ]
+    if suppressed_count:
+        reasons.append(
+            f"{suppressed_count} accepted rows are repeated same-symbol observations "
+            "during an existing lifecycle, not independent order submissions"
+        )
     if accepted_excess_20 is not None and accepted_excess_20 > 0.0 and filled_count >= 5:
         verdict = "GO"
         meaning = "ready to design a revised offline candidate-profile hypothesis only"
@@ -665,6 +773,38 @@ def _render_markdown(report: dict[str, Any]) -> str:
             "",
             report["fill_classification"]["classification_policy"],
             "",
+            "| Submission metric | Value |",
+            "| --- | ---: |",
+            f"| Submitted accepted lifecycles | "
+            f"{report['fill_classification']['submitted_count']} |",
+            f"| Submitted fill rate | "
+            f"{_fmt(report['fill_classification']['submitted_fill_rate'])} |",
+            f"| Not submitted: existing same-symbol lifecycle | "
+            f"{report['fill_classification']['not_submitted_existing_symbol_lifecycle_count']} |",
+            f"| Remaining unknown | "
+            f"{report['fill_classification']['unknown_count']} |",
+            f"| Distinct overlapping lifecycles | "
+            f"{report['fill_classification']['overlapping_setup_count']} |",
+            f"| Overlap states | "
+            f"`{report['fill_classification']['overlap_state_counts']}` |",
+            "",
+            "## 20-Session Benchmark Excess By Lifecycle Classification",
+            "",
+            "| Classification | Observed | Mean | Median |",
+            "| --- | ---: | ---: | ---: |",
+        ]
+    )
+    for classification, windows in report["benchmark_spy_excess"][
+        "by_fill_classification"
+    ].items():
+        metrics = windows.get("20", {})
+        lines.append(
+            f"| `{classification}` | {metrics.get('observed', 0)} | "
+            f"{_fmt(metrics.get('mean'))} | {_fmt(metrics.get('median'))} |"
+        )
+    lines.extend(
+        [
+            "",
             "## Entry/Fill Details",
             "",
             "| Metric | Value |",
@@ -737,11 +877,15 @@ def _render_markdown(report: dict[str, Any]) -> str:
             "",
             "## Source Artifacts",
             "",
+            "| Source | Path | SHA-256 |",
+            "| --- | --- | --- |",
         ]
     )
-    lines.extend(
-        f"- `{name}`: `{path}`" for name, path in report["source_artifacts"].items()
-    )
+    for name, path in report["source_artifacts"].items():
+        lines.append(
+            f"| `{name}` | `{path}` | "
+            f"`{report['source_artifact_sha256'][name]}` |"
+        )
     lines.append("")
     return "\n".join(lines)
 
@@ -797,8 +941,127 @@ def _source_artifacts(paths: PullbackDiagnosticInputPaths) -> dict[str, str]:
     return {field: str(getattr(paths, field)) for field in paths.__dataclass_fields__}
 
 
+def _source_artifact_sha256(paths: PullbackDiagnosticInputPaths) -> dict[str, str]:
+    hashes: dict[str, str] = {}
+    for field in paths.__dataclass_fields__:
+        digest = sha256()
+        with getattr(paths, field).open("rb") as handle:
+            for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+                digest.update(chunk)
+        hashes[field] = digest.hexdigest()
+    return hashes
+
+
 def _load_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _scanner_rows_by_setup_id(payload: dict[str, Any]) -> dict[str, dict[str, Any]]:
+    rows: dict[str, dict[str, Any]] = {}
+    for session in payload.get("sessions", ()):
+        for row in session.get("material_decision_rows", ()):
+            setup_id = row.get("setup_id")
+            if setup_id is None:
+                continue
+            key = str(setup_id)
+            existing = rows.get(key)
+            if existing is not None and existing != row:
+                raise ValueError(f"conflicting scanner rows for setup {key}")
+            rows[key] = row
+    return rows
+
+
+def _lifecycle_intervals(
+    trades: list[dict[str, Any]],
+    pending_orders: list[dict[str, Any]],
+    transitions: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    grouped: dict[str, dict[str, Any]] = {}
+    for source_kind, rows in (
+        ("trade", trades),
+        ("pending_order", pending_orders),
+        ("transition", transitions),
+    ):
+        for row in rows:
+            setup_id = row.get("setup_id")
+            if setup_id is None:
+                continue
+            record = grouped.setdefault(
+                str(setup_id),
+                {
+                    "setup_id": str(setup_id),
+                    "symbols": set(),
+                    "dates": [],
+                    "entry_fill_date": None,
+                    "exit_fill_date": None,
+                    "source_kinds": set(),
+                },
+            )
+            record["source_kinds"].add(source_kind)
+            if row.get("symbol") is not None:
+                record["symbols"].add(str(row["symbol"]))
+            for field in (
+                "entry_signal_date",
+                "session_date",
+                "entry_fill_date",
+                "exit_fill_date",
+            ):
+                parsed = _parse_date(row.get(field))
+                if parsed is not None:
+                    record["dates"].append(parsed)
+            if source_kind == "trade":
+                record["entry_fill_date"] = _parse_date(row.get("entry_fill_date"))
+                record["exit_fill_date"] = _parse_date(row.get("exit_fill_date"))
+
+    intervals: list[dict[str, Any]] = []
+    for setup_id, record in grouped.items():
+        if len(record["symbols"]) != 1 or not record["dates"]:
+            continue
+        intervals.append(
+            {
+                "setup_id": setup_id,
+                "symbol": next(iter(record["symbols"])),
+                "start_date": min(record["dates"]),
+                "end_date": max(record["dates"]),
+                "entry_fill_date": record["entry_fill_date"],
+                "exit_fill_date": record["exit_fill_date"],
+                "source_kinds": sorted(record["source_kinds"]),
+            }
+        )
+    return intervals
+
+
+def _overlapping_symbol_lifecycles(
+    candidate: dict[str, Any],
+    intervals: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    candidate_date = _parse_date(candidate.get("signal_session"))
+    symbol = candidate.get("symbol")
+    setup_id = str(candidate.get("setup_id"))
+    if candidate_date is None or symbol is None:
+        return []
+    overlaps: list[dict[str, Any]] = []
+    for interval in intervals:
+        if interval["symbol"] != str(symbol) or interval["setup_id"] == setup_id:
+            continue
+        if not interval["start_date"] <= candidate_date <= interval["end_date"]:
+            continue
+        entry_fill_date = interval["entry_fill_date"]
+        state = (
+            "OPEN_POSITION"
+            if entry_fill_date is not None and candidate_date >= entry_fill_date
+            else "PENDING_ENTRY"
+        )
+        overlaps.append(
+            {
+                "setup_id": interval["setup_id"],
+                "state_at_candidate": state,
+                "start_date": interval["start_date"].isoformat(),
+                "end_date": interval["end_date"].isoformat(),
+                "source_kinds": interval["source_kinds"],
+            }
+        )
+    return sorted(overlaps, key=lambda row: (row["start_date"], row["setup_id"]))
 
 
 def _group_by_setup_id(rows: list[dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:

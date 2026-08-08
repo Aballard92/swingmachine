@@ -22,23 +22,51 @@ def test_pullback_diagnostic_classifies_fill_states_and_missing_fields(
     )
 
     assert report["verdict"]["verdict"] == "INCONCLUSIVE"
-    assert report["populations"]["all_accepted_pullback"]["row_count"] == 3
+    assert report["populations"]["all_accepted_pullback"]["row_count"] == 4
     assert report["populations"]["traded_accepted_pullback"]["row_count"] == 1
-    assert report["populations"]["untraded_accepted_pullback"]["row_count"] == 2
+    assert report["populations"]["untraded_accepted_pullback"]["row_count"] == 3
     assert report["fill_classification"]["counts"] == {
         "FILLED": 1,
+        "NOT_SUBMITTED_EXISTING_SYMBOL_LIFECYCLE": 1,
         "UNFILLED_CANCELLED": 1,
         "UNKNOWN_NO_ORDER_EVIDENCE": 1,
     }
+    assert report["fill_classification"]["submitted_count"] == 2
+    assert report["fill_classification"]["submitted_fill_rate"] == 0.5
+    assert report["fill_classification"][
+        "not_submitted_existing_symbol_lifecycle_count"
+    ] == 1
+    assert report["fill_classification"]["unknown_count"] == 1
     filled = report["candidate_rows"][0]
     assert filled["entry_fill_price"] == 103.0
     assert filled["fill_delay_sessions"] == 1
     assert filled["stop_hit"] is True
     assert filled["target_hit"] is None
+    overlap = report["candidate_rows"][2]
+    assert (
+        overlap["fill_classification"]
+        == "NOT_SUBMITTED_EXISTING_SYMBOL_LIFECYCLE"
+    )
+    assert overlap["scanner_order_plan_present"] is True
+    assert overlap["overlapping_symbol_lifecycles"] == [
+        {
+            "end_date": "2026-01-10",
+            "setup_id": "setup-filled",
+            "source_kinds": ["pending_order", "trade", "transition"],
+            "start_date": "2026-01-01",
+            "state_at_candidate": "OPEN_POSITION",
+        }
+    ]
+    assert (
+        report["candidate_rows"][3]["fill_classification"]
+        == "UNKNOWN_NO_ORDER_EVIDENCE"
+    )
     missing = {row["field"]: row["status"] for row in report["missing_unavailable_fields"]}
     assert missing["target_hit"] == "NOT_FOUND"
     assert missing["r_multiple"] == "DERIVED_PARTIAL"
     assert missing["forward_40d"] == "NOT_FOUND"
+    assert missing["filled"] == "PARTIAL_DERIVED"
+    assert set(report["source_artifact_sha256"]) == set(report["source_artifacts"])
 
 
 def test_pullback_diagnostic_writer_outputs_json_and_markdown(tmp_path: Path) -> None:
@@ -56,6 +84,8 @@ def test_pullback_diagnostic_writer_outputs_json_and_markdown(tmp_path: Path) ->
     assert payload["report_id"] == "pullback_fill_lifecycle_diagnostic_20260511T120000Z"
     assert "PULLBACK Fill/Lifecycle Diagnostic Report" in markdown
     assert "Verdict: `INCONCLUSIVE`" in markdown
+    assert "20-Session Benchmark Excess By Lifecycle Classification" in markdown
+    assert "Source | Path | SHA-256" in markdown
     assert "`target_hit`" in markdown
 
 
@@ -95,12 +125,21 @@ def _write_input_artifacts(tmp_path: Path) -> PullbackDiagnosticInputPaths:
                         excess_20=-0.04,
                     ),
                     _attribution_row(
+                        symbol="AAA",
+                        setup_id="setup-overlap",
+                        signal_session="2026-01-04",
+                        traded=False,
+                        net_pnl=None,
+                        net_return=None,
+                        excess_20=-0.03,
+                    ),
+                    _attribution_row(
                         symbol="CCC",
                         setup_id="setup-unknown",
                         traded=False,
                         net_pnl=None,
                         net_return=None,
-                        excess_20=-0.03,
+                        excess_20=-0.02,
                     ),
                     _attribution_row(
                         symbol="DDD",
@@ -117,14 +156,41 @@ def _write_input_artifacts(tmp_path: Path) -> PullbackDiagnosticInputPaths:
         + "\n",
         encoding="utf-8",
     )
-    scanner.write_text(json.dumps({"sessions": []}) + "\n", encoding="utf-8")
+    scanner.write_text(
+        json.dumps(
+            {
+                "sessions": [
+                    {
+                        "material_decision_rows": [
+                            {
+                                "setup_id": setup_id,
+                                "order_plan_id": f"order-plan-{setup_id}",
+                                "risk_plan_id": f"risk-plan-{setup_id}",
+                                "reason_codes": ["SETUP_VALID"],
+                            }
+                            for setup_id in (
+                                "setup-filled",
+                                "setup-cancelled",
+                                "setup-overlap",
+                                "setup-unknown",
+                            )
+                        ]
+                    }
+                ]
+            }
+        )
+        + "\n",
+        encoding="utf-8",
+    )
     trade_ledger.write_text(
         json.dumps(
             {
                 "trades": [
                     {
+                        "symbol": "AAA",
                         "setup_id": "setup-filled",
                         "trade_id": "trade-1",
+                        "entry_signal_date": "2026-01-01",
                         "entry_fill_date": "2026-01-03",
                         "entry_fill_price": 103.0,
                         "entry_reference_price": 102.0,
@@ -148,12 +214,14 @@ def _write_input_artifacts(tmp_path: Path) -> PullbackDiagnosticInputPaths:
             {
                 "pending_orders": [
                     {
+                        "symbol": "AAA",
                         "setup_id": "setup-filled",
                         "status": "FILLED",
                         "order_type": "STOP_LIMIT",
                         "session_date": "2026-01-03",
                     },
                     {
+                        "symbol": "BBB",
                         "setup_id": "setup-cancelled",
                         "status": "CANCELLED",
                         "order_type": "STOP_LIMIT",
@@ -171,6 +239,7 @@ def _write_input_artifacts(tmp_path: Path) -> PullbackDiagnosticInputPaths:
             {
                 "transitions": [
                     {
+                        "symbol": "AAA",
                         "setup_id": "setup-filled",
                         "session_date": "2026-01-03",
                         "from_state": "PENDING_ENTRY",
@@ -277,11 +346,12 @@ def _attribution_row(
     net_return: float | None,
     excess_20: float,
     pattern_type: str = "PULLBACK",
+    signal_session: str = "2026-01-01",
 ) -> dict[str, object]:
     return {
         "panel_id": "unit",
         "symbol": symbol,
-        "signal_session": "2026-01-01",
+        "signal_session": signal_session,
         "next_session": "2026-01-02",
         "candidate_id": f"candidate-{setup_id}",
         "setup_id": setup_id,
