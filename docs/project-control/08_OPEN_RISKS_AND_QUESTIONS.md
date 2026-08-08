@@ -11,9 +11,16 @@
 ## Product risks
 
 - The current system is mechanically stronger but has not proven a market edge.
+- PULLBACK is `PARKED_INCONCLUSIVE`; it must not silently re-enter candidate or
+  profile work without genuinely new independent evidence and separate authority.
 - PULLBACK has a positive traded subset but negative all-accepted evidence and too few trades.
 - TIGHT_BASE appears damaging and must not remain hidden in future candidates.
 - Building another profile before the design gate passes would repeat the earlier ad hoc iteration risk.
+- `SWING-PC-005A` stopped at Gate 0; treating that packet as an economic failure
+  or rerunning it after an ad hoc repair would invalidate the preregistration.
+- `SWING-PC-006` then tested the same families under accepted limitations and both
+  failed discovery. H1's positive mean must not obscure its negative median and
+  61.76% symbol concentration; H2 was negative and 79.31% concentrated.
 - Uploading too much stale documentation into ChatGPT Project could confuse product direction.
 
 ## Operational risks
@@ -26,11 +33,12 @@
 
 ## Local Sync / Checkout Warning
 
-- GitHub `main` has the accepted squash-merged governance/setup baseline from PR #1.
-- Local `main` may still contain the pre-squash commits `5082e91`, `df27534`, and `e560a62`.
-- `README.md` and broad untracked baseline files may remain local and must be preserved until separately reviewed.
-- Do not run `reset`, `clean`, `pull`, `checkout`/`switch`, or sync commands unless a specific bounded sync task authorizes them.
-- Treat local sync, README cleanup, dirty-worktree cleanup, and untracked baseline-file decisions as separate future tasks.
+- The pre-alignment local checkout contained a large uncommitted baseline and must
+  remain preserved until the house-alignment pull request is accepted.
+- Review and publication work occurs on the dedicated house-alignment branch made
+  from GitHub `main`; do not destructively clean or reset the preserved checkout.
+- After the alignment pull request is merged, update the preserved checkout only
+  through a separately verified, non-destructive sync procedure.
 
 ## Data/API risks
 
@@ -39,21 +47,45 @@
 - Provider-positive accepted edge is not confirmed across both providers.
 - Corporate action/adjustment assumptions may depend on upstream providers.
 - Trading212 source DBs are local dependencies and may not exist in other environments.
+- The MPS historical panel remains partial: BLOX classification is unresolved;
+  34,267 common-stock rows lack point-in-time sector/reference evidence; 39,782
+  rows lack shares evidence; and HLXB/STLE are fully shares-masked.
+- These gaps are accepted fail closed for research. They must not be silently
+  imputed or treated as qualification-grade coverage.
+- The accepted broader screen additionally lacks a frozen SPY benchmark, dividend
+  payment dates for all 974 dividend events, and delisting outcomes for 81
+  terminal rows. These stopped `SWING-PC-005A` before strategy outcomes.
+- Indefinite acquisition is stopped. A future acquisition task must meet the exact
+  bounded exception in `10_HISTORICAL_DATA_LIMITATION_ACCEPTANCE.md`.
+- Stooq and Yahoo transport failures are recorded. Because the absolute-only
+  screen still failed discovery, another benchmark source is not
+  decision-critical and must not be pursued in this lane.
 
 ## Testing gaps
 
 - Current tests are broad, but paper/live behavior is intentionally not exercised as real execution.
+- CI's `mypy_core.ini` gate is intentionally bounded to seven typed-core modules.
+  A cache-cold diagnostic with recursive imported-module reporting enabled found
+  237 strict typing errors across 21 legacy modules; this debt is not a CI pass
+  claim and should be reduced through separately bounded refactors.
 - Full-suite runtime may be slow; focused tests are safer for small tasks.
 - Need clearer current testing strategy doc for which gates to run by task type.
 - Need active summary of latest passing checks, rather than relying on long implementation log.
-- Need repeatable deeper PULLBACK replay tests if that research lane proceeds.
+- The PULLBACK lifecycle diagnostic now has focused repeatable tests; broader
+  integration coverage remains a later task only if the lane continues.
+- `SWING-PC-005A` source-mask and gate-lock tests pass. Common-exit, trade-count,
+  and outcome tests were correctly not implemented because Gate 0 stopped before
+  the backtest path.
+- `SWING-PC-006` adds tested common-lifecycle behavior, non-spendable ex-date
+  dividend accrual, terminal last-close handling, and total-loss sensitivity.
+  The focused combined slice passed 28 tests.
 
 ## Open questions needing human decision
 
 - What minimum sample size is required before any candidate can be considered paper-reviewable?
-- Should PULLBACK fill/lifecycle replay be the next research lane, or should ChatGPT design broader alternatives first?
 - Should TIGHT_BASE be permanently retired or allowed to re-enter through explicit redesign?
-- Should future provider validation require Hugging Face, another provider, or accepted Alpaca-only limitations?
+- What decision-critical future requirement, if any, would justify reopening
+  provider acquisition under the documented stop condition?
 - How much source code should be uploaded to ChatGPT Project, if any?
 - Should ChatGPT Project maintain the active backlog directly, or should Codex generate snapshots on demand?
 - What is the sponsor's threshold for benchmark-relative underperformance versus absolute profitability?
@@ -61,6 +93,9 @@
 ## Current risk posture
 
 Risk posture is controlled if work remains documentation, offline research, and bounded diagnostics.
+
+The current data posture is also controlled only while unresolved rows remain
+masked/unknown and the acquisition stop condition is observed.
 
 Risk posture becomes unacceptable if Codex:
 

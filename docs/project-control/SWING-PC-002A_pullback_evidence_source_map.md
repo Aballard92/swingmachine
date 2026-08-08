@@ -1,11 +1,19 @@
 # SWING-PC-002A - PULLBACK Evidence Source Map
 
-Status: `READY_WITH_LIMITATIONS`
+Status: `COMPLETED_HISTORICAL_SOURCE_MAP`
 Scope: read-only evidence/source map plus this documentation file
+
+Current-status override, 2026-08-08: the mapped diagnostic was implemented and
+refreshed. Its final verdict remained `INCONCLUSIVE`, and accepted
+`SWING-PC-003` Option A parked PULLBACK. This map is retained for provenance and
+does not authorise another implementation or rerun.
 
 ## 1. Purpose
 
-This document maps the existing SwingMachine evidence sources for a future `SWING-PC-002` offline PULLBACK fill/lifecycle diagnostic report. It exists to confirm what can be implemented from current artifacts without guessing, inventing fields, changing strategy behavior, or running any replay/paper/live/broker path.
+This document maps the evidence sources used by the completed `SWING-PC-002`
+offline PULLBACK fill/lifecycle diagnostic report. It is retained to show what
+could be derived without guessing, inventing fields, changing strategy behavior,
+or running any replay/paper/live/broker path.
 
 Current gates remain unchanged:
 

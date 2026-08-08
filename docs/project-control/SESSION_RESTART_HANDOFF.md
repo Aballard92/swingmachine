@@ -1,84 +1,142 @@
 # Session Restart Handoff - swingmachine
 
-Saved: 2026-05-08
-Repo: `/home/alexballard92/swingmachine`
+Saved: 2026-08-08
+Repository: `Aballard92/swingmachine`
+Alignment branch: `agent/house-alignment-20260808`
+Alignment base: `a9b203870383961494991ea65efd0f40cc66e4a1`
+Canonical revision: the reviewed Git commit containing this file.
 
-## Current repo state
+## Current truth
 
-We are in the existing `swingmachine` repository. Do not create a nested `swingmachine` folder.
+- Current phase: offline research and qualification only.
+- Revised baseline candidate: none selected.
+- PULLBACK diagnostic: `INCONCLUSIVE`.
+- PULLBACK lane: `PARKED_INCONCLUSIVE` under accepted `SWING-PC-003`
+  Option A.
+- Broader research design: `SWING-PC-005` is `ACCEPTED`.
+- Broader screen implementation: the one authorized `SWING-PC-005A` execution is
+  complete with `STOP_SOURCE_OR_TEMPORALITY_INVALID`.
+- Limitation-tolerant fallback: `SWING-PC-006` completed with
+  `NO_FAMILY_PASSES_DISCOVERY`.
+- Gate 2 / holdout: `NOT_OPENED`.
+- TIGHT_BASE: isolated unless separately redesigned and re-qualified.
+- Historical-data unknowns: accepted as a fail-closed research limitation.
+- Indefinite account/API/dataset/database/Vault acquisition: stopped.
+- Paper trading: `BLOCKED`.
+- Live trading: `PROHIBITED`.
+- Broker/API/runtime actions: `NOT_AUTHORIZED`.
+- Revised profile build: `NOT_AUTHORIZED`.
 
-Latest work was documentation-only under `docs/project-control/` to create a compact ChatGPT Project source-of-truth pack.
+## Closing PULLBACK evidence
 
-## Files created/updated in the latest documentation reset
+Primary report:
+`reports/swing_machine_v0_1/pullback_fill_lifecycle_diagnostic_20260729T130830Z/`
 
-- `docs/project-control/REPO_CONTEXT_INVENTORY.md`
-- `docs/project-control/RECOMMENDED_CHATGPT_SOURCE_PACK.md`
-- `docs/project-control/01_PRODUCT_BRIEF.md`
-- `docs/project-control/02_CURRENT_STATE.md`
-- `docs/project-control/03_TARGET_ARCHITECTURE.md`
-- `docs/project-control/04_DECISION_LOG.md`
-- `docs/project-control/05_BACKLOG_AND_ROADMAP.md`
-- `docs/project-control/06_RUN_TEST_DEPLOY_GUIDE.md`
-- `docs/project-control/07_CODEX_WORKFLOW_AND_GUARDRAILS.md`
-- `docs/project-control/08_OPEN_RISKS_AND_QUESTIONS.md`
-- `docs/project-control/SESSION_RESTART_HANDOFF.md`
+- 27 raw accepted observations.
+- 10 submitted lifecycles: 4 filled and 6 cancelled.
+- 17 repeated same-symbol observations during an existing lifecycle: 6 pending
+  and 11 open-position overlaps.
+- Zero unexplained no-order rows remain.
+- All-accepted 20-session SPY-excess mean: -2.4352%.
+- Filled 20-session mean: +0.7578%; median: -1.8988%.
+- All four fills are NFLX.
 
-No application code, config, tests, data, reports, or existing docs outside `docs/project-control/` were intentionally changed during the source-pack reset.
+Report identities:
 
-## Current product/qualification truth
+- JSON:
+  `59cc627d6b73ca1137b7bc40b4043f957f1f92faaba564f8f18efc6917d2862f`
+- Markdown:
+  `c57e0eb632248430c8a982865e360457444d88f5b4d8c991154399a832435203`
 
-- Paper trading remains `BLOCKED`.
-- Live trading remains prohibited.
-- No revised baseline candidate is selected.
-- Do not build a revised profile yet.
-- Serious full qualification is blocked until a revised candidate is selected for offline qualification.
-- Next best work is deeper `PULLBACK` fill/lifecycle replay research design.
-- `TIGHT_BASE` should be isolated unless explicitly redesigned and re-qualified.
-- Broad Hugging Face acquisition should be deferred until an Alpaca-side hypothesis shows edge.
+## SWING-PC-005A result
 
-## Operating model captured in project-control docs
+Primary report:
+`reports/swing_machine_v0_1/broader_offline_hypothesis_screen_20260729T171017Z/`
 
-- Human sponsor: final decision-maker and prioritisation owner.
-- ChatGPT Project: Product Owner, Solution Architect, Delivery Controller.
-- Codex: BA, Developer, Tester, Repo Operator.
-- Codex should execute bounded tasks and report evidence. It should not silently own product direction, architecture, roadmap, or prioritisation.
+- Fixed hashes, parsed config, schema/uniqueness, decision-time availability,
+  fail-closed masks, and frozen temporal boundaries passed.
+- No frozen SPY benchmark was present.
+- All 974 dividend events lacked payment dates.
+- 81 terminal delisted rows had no delisting return or cash-terms fields.
+- No H1, H2, or B0 strategy result was calculated.
+- Discovery, both walk-forward gates, and the holdout remained unopened.
 
-## Recommended ChatGPT Project upload pack
+Report identities:
 
-Must-upload list is recorded in:
+- JSON:
+  `af4e682849d945b8d509ec2546f3e2c7d72c1602709d18794841fb4d528df102`
+- Markdown:
+  `8c9e952497acb2d188e130ef5d636102ede31ef4cc94bbbd06b61de1e9f2582a`
 
-- `docs/project-control/RECOMMENDED_CHATGPT_SOURCE_PACK.md`
+## SWING-PC-006 result
 
-The pack intentionally avoids uploading the full backlog, implementation log, generated reports tree, source tree, and tests tree unless a code-focused Project is needed.
+Primary report:
+`reports/swing_machine_v0_1/limitation_tolerant_screen_20260729T194422Z/`
 
-## Important stale/conflicting docs to treat with caution
+- The first attempt was invalidated by a Crostini restart before any report or
+  result was written.
+- The unchanged recovery execution completed.
+- H1: 68 trades, seven securities, +3,510.02 net PnL, +0.1746 mean R,
+  -0.2530 median R, and 61.76% maximum symbol share.
+- H2: 29 trades, three securities, -509.92 net PnL, -0.0805 mean R,
+  -0.2354 median R, and 79.31% maximum symbol share.
+- Both families failed discovery under both delisting scenarios.
+- Gate 2 and the holdout remained unopened.
 
-Do not treat these as current authority:
+Report identities:
 
-- `swing_trading_bot_design_spec.md`
-- `swing_trading_bot_config_template.yaml`
-- `SESSION_CONTINUATION.md`
-- `docs/swing_machine_v0_1_first_paper_runbook.md`
-- `docs/swing_machine_v0_1_paper_trading_review_packet.md`
-- `docs/swing_machine_v0_1_guarded_serious_full_run_plan.md`
-- Bulk generated reports under `reports/swing_machine_v0_1/` without checking latest superseding packets.
+- JSON:
+  `e1ae5e0293d2ab50e630cfb9dc139fdfc61affdf6c7b470d13e2ca703f43a21a`
+- Markdown:
+  `751b1a9a08cd05ecb3f8d2a2ccda434070cf2223eb8b62774845dd60c4fdceca`
 
-## Recommended next ticket
+## Recorded decision
 
-`SWING-PC-001 - Design deeper PULLBACK fill/lifecycle replay research packet`
+Read:
 
-Suggested scope:
+1. `SWING-PC-003_pullback_lane_decision_packet.md`
+2. `SWING-PC-005_broader_offline_hypothesis_search_design.md`
+3. `SWING-PC-006_limitation_tolerant_exploratory_screen_design.md`
+4. `10_HISTORICAL_DATA_LIMITATION_ACCEPTANCE.md`
+5. `02_CURRENT_STATE.md`
+6. `04_DECISION_LOG.md`
+7. `05_BACKLOG_AND_ROADMAP.md`
 
-- Documentation/design only first.
-- No strategy config or code changes.
-- Define what evidence would prove or disprove whether PULLBACK fill/lifecycle selection is repeatable.
-- Inputs should include the latest PULLBACK root-cause, pattern diagnostic, cost stress, provider comparison, and null-aware denominator evidence.
-- Output should include metrics, acceptance criteria, stop conditions, and follow-up implementation tickets.
+Accepted exact decision:
 
-## Resume instructions for next Codex session
+`ACCEPT_SWING_PC_003_OPTION_A_PARK_PULLBACK_V1`
 
-1. Confirm cwd is `/home/alexballard92/swingmachine`.
-2. Read `docs/project-control/SESSION_RESTART_HANDOFF.md` first.
-3. Read `docs/project-control/05_BACKLOG_AND_ROADMAP.md` and `docs/project-control/07_CODEX_WORKFLOW_AND_GUARDRAILS.md` next.
-4. If asked to continue implementation, start with `SWING-PC-001` unless the sponsor gives a different priority.
-5. Keep paper/live/broker execution blocked unless the sponsor explicitly approves an exact command.
+Option B and `SWING-PC-003A` are not authorized. No broader hypothesis-search task
+was authorized by the PULLBACK decision.
+
+The design was accepted with:
+
+`ACCEPT_SWING_PC_005_DESIGN_V1`
+
+The single implementation authorization was granted and consumed:
+
+`AUTHORISE_SWING_PC_005A_ONE_BOUNDED_OFFLINE_SCREEN_V1`
+
+## Alignment and preservation warning
+
+The 2026-08-08 house-alignment work was built on a dedicated branch from GitHub
+`main`. The pre-alignment local checkout and its uncommitted source/evidence state
+were checkpointed outside the repository and deliberately left untouched.
+
+Do not destructively reset or clean that preserved checkout. After the alignment
+pull request is accepted, any local sync must be separately verified and must not
+discard the checkpoint or uncommitted evidence.
+
+## Resume instructions
+
+1. Confirm repository identity, branch, HEAD, staged state, dirty state, and
+   untracked state.
+2. Read the six current-decision files listed above.
+3. Preserve PULLBACK as `PARKED_INCONCLUSIVE`.
+4. Do not rerun `SWING-PC-005A` or open the frozen holdout without a new,
+   separately accepted design and exact authority.
+5. Do not rerun `SWING-PC-006` or repair its discovery result through thresholds,
+   exclusions, or additional data.
+6. Keep all profile, serious-qualification, paper, live, broker, API, runtime,
+   acquisition, and deployment gates closed unless a later exact authorization
+   changes a named gate.

@@ -14,6 +14,9 @@ dist/
 .env.*
 !.env.example
 
+# Machine-local provider source paths. Use the tracked .example.yaml template.
+config/swing_machine_v0_1_trading212_sources.yaml
+
 output/
 data/
 prepared_data/

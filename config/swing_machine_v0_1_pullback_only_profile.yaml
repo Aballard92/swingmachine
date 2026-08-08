@@ -1,0 +1,15 @@
+# Historical superseded profile alias. PULLBACK is `PARKED_INCONCLUSIVE`;
+# this file is not a current candidate or operational profile.
+
+baseline_id: swing_machine_v0_1
+profile_alias_version: swing_machine_v0_1_profile_alias_v1
+strategy_config_path: swing_machine_v0_1_pullback_only_config.yaml
+expected_strategy_id: RF_TPC_V2
+expected_strategy_version: 2.1.0-pullback-only-offline
+serious_full_run_policy: PROHIBITED_UNTIL_QUALIFIED
+notes:
+- Offline-only controlled revision profile.
+- Does not mutate the frozen swing_machine_v0_1 baseline profile.
+- TIGHT_BASE is excluded by explicit setup.pattern_priority configuration.
+- Paper trading remains prohibited until a revision qualification packet explicitly
+  changes the gate.

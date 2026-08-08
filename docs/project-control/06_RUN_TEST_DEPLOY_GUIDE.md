@@ -87,7 +87,9 @@ Config source-of-truth:
 - `swing_trading_bot_config_template_v2.yaml`
 - `config/swing_machine_v0_1_profile.yaml`
 - selected-period configs under `config/`
-- Trading212 source config at `config/swing_machine_v0_1_trading212_sources.yaml`
+- Machine-local Trading212 source config copied from
+  `config/swing_machine_v0_1_trading212_sources.example.yaml`; the populated
+  non-example file remains ignored.
 
 Rules:
 

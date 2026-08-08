@@ -1,11 +1,18 @@
 # SWING-PC-001 - PULLBACK Fill/Lifecycle Research Design
 
-Status: `DESIGN_READY_FOR_REVIEW`
+Status: `COMPLETED_HISTORICAL_DESIGN`
 Scope: documentation-only
+
+Current-status override, 2026-08-08: the designed diagnostic was implemented and
+refreshed, remained `INCONCLUSIVE`, and closed through accepted `SWING-PC-003`
+Option A. PULLBACK is now `PARKED_INCONCLUSIVE`; this document authorises no new
+implementation or rerun.
 
 ## 1. Purpose
 
-This packet designs the next offline research lane before any new SwingMachine profile is built. It defines what deeper PULLBACK fill/lifecycle replay must prove or disprove, what evidence the future diagnostic should produce, and where the lane must stop.
+This packet records the historical design for the completed offline PULLBACK
+fill/lifecycle diagnostic. It defines what the diagnostic was required to prove
+or disprove and where the lane had to stop.
 
 The long-term product vision remains an autonomous swing-trading bot that can research, identify, execute, monitor, exit, and manage account-level risk. The current repo phase is not that execution phase. Current work is offline research and qualification only.
 

@@ -1,0 +1,136 @@
+# Deprecated: this v1 config template is retained for archive only.
+# Do not implement from this file.
+# Use swing_trading_bot_config_template_v2.yaml instead.
+
+strategy:
+  id: RF_TPC_V1
+  description: Regime-Filtered Trend Pullback Continuation Swing Bot
+  timeframe: 1D
+  scan_schedule: post_close
+  order_schedule: next_session
+  long_only: true
+
+universe:
+  asset_types: [COMMON_STOCK, ETF]
+  min_history_days: 252
+  min_price: 5.0
+  min_avg_daily_dollar_volume: 10000000
+  exclude_leveraged_etfs: true
+  exclude_inverse_etfs: true
+  allowed_exchanges: []
+  allowed_symbols: []
+  blocked_symbols: []
+
+regime:
+  benchmark_symbol: SPY
+  risk_on_requires_close_above_ma200: true
+  risk_on_requires_ma200_slope_positive: true
+  breadth_enabled: true
+  min_pct_above_ma200: 0.55
+  realized_vol_lookback_days: 20
+  panic_rebound_enabled: true
+  panic_lookback_days: 252
+  panic_decline_threshold: -0.15
+  rebound_window_days: 20
+  rebound_return_threshold: 0.08
+
+ranking:
+  use_12_1_momentum: true
+  use_6m_return: true
+  use_relative_strength: true
+  use_52w_high_distance: true
+  weights:
+    mom_252_21: 0.35
+    ret_126: 0.20
+    rs_vs_benchmark: 0.20
+    proximity_52w_high: 0.15
+    trend_quality: 0.10
+  min_candidate_score_percentile: 0.80
+
+setup:
+  allowed_patterns: [PULLBACK, TIGHT_BASE]
+  pullback_min_days: 3
+  pullback_max_days: 10
+  tight_base_min_days: 5
+  tight_base_max_days: 15
+  max_pullback_depth_atr: 2.0
+  require_range_contraction: true
+  require_volume_dry_up: false
+  require_close_above_ma50: true
+  require_ma50_above_ma200: true
+  require_positive_ma200_slope: true
+  max_distance_from_52w_high: 0.10
+
+entry:
+  order_type: STOP_LIMIT
+  entry_buffer_atr: 0.10
+  max_gap_above_trigger_atr: 0.75
+  slippage_allowance_atr: 0.15
+  order_expiry_sessions: 3
+  use_regular_session_only: true
+  enable_extended_hours: false
+
+risk:
+  risk_per_trade_pct_equity: 0.003
+  max_position_pct_equity: 0.08
+  max_sector_pct_equity: 0.20
+  max_portfolio_heat_pct_equity: 0.02
+  max_new_risk_per_day_pct_equity: 0.01
+  portfolio_vol_target_annualized: 0.15
+  reduce_size_in_caution: true
+  block_new_entries_in_risk_off: true
+  block_new_entries_in_panic_rebound: true
+
+stops:
+  initial_stop_mode: ATR_OR_SETUP_LOW
+  stop_atr_multiple: 1.8
+  move_to_breakeven_enabled: false
+  trailing_stop_enabled: true
+  trailing_mode: ATR
+  trailing_atr_multiple: 2.5
+  time_stop_enabled: true
+  max_bars_without_progress: 10
+
+exits:
+  exit_on_close_below_ma20: false
+  exit_on_close_below_ma50: false
+  exit_on_regime_flip: true
+  profit_target_enabled: false
+  allow_partial_scale_out: false
+
+events:
+  earnings_filter_enabled: true
+  min_days_before_earnings_for_new_entry: 5
+  allow_holding_through_earnings: false
+  use_eps_surprise_overlay: false
+  use_transcript_nlp_overlay: false
+
+execution:
+  broker: PAPER
+  use_synthetic_brackets: true
+  deduplicate_order_intents: true
+  max_pending_orders_per_symbol: 4
+  rate_limit_guard_enabled: true
+  reconcile_positions_every_minutes: 5
+  reconcile_orders_every_minutes: 1
+
+monitoring:
+  enable_stale_data_checks: true
+  max_data_age_seconds: 300
+  enable_slippage_alerts: true
+  slippage_alert_bps: 50
+  enable_drawdown_kill_switch: true
+  daily_drawdown_kill_switch_pct: 0.02
+  enable_reconciliation_kill_switch: true
+  enable_broker_health_kill_switch: true
+
+backtest:
+  use_adjusted_prices_for_signals: true
+  use_unadjusted_prices_for_execution_model: true
+  include_splits_and_dividends: true
+  include_delistings: true
+  include_spread_model: true
+  include_market_impact_model: true
+  include_fx_cost_model: true
+  walk_forward_enabled: true
+  pbo_analysis_enabled: true

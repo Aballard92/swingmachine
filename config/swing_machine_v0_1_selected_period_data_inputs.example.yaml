@@ -1,0 +1,22 @@
+baseline_id: swing_machine_v0_1
+plan_version: swing_machine_v0_1_data_input_plan_v1
+selected_period_plan_path: swing_machine_v0_1_selected_periods.yaml
+periods:
+  - period_id: smoke_recent_5_sessions
+    ohlcv_path: ../data/qualification/smoke_recent_5_sessions/ohlcv.parquet
+    symbol_reference_path: ../data/qualification/smoke_recent_5_sessions/symbol_reference.parquet
+    corporate_actions_path: ../data/qualification/smoke_recent_5_sessions/corporate_actions.parquet
+    earnings_events_path: ../data/qualification/smoke_recent_5_sessions/earnings_events.parquet
+    features_path: ../data/qualification/smoke_recent_5_sessions/features.parquet
+  - period_id: recent_medium_replay_window
+    ohlcv_path: ../data/qualification/recent_medium_replay_window/ohlcv.parquet
+    symbol_reference_path: ../data/qualification/recent_medium_replay_window/symbol_reference.parquet
+    corporate_actions_path: ../data/qualification/recent_medium_replay_window/corporate_actions.parquet
+    earnings_events_path: ../data/qualification/recent_medium_replay_window/earnings_events.parquet
+    features_path: ../data/qualification/recent_medium_replay_window/features.parquet
+  - period_id: historical_contract_stability_window
+    ohlcv_path: ../data/qualification/historical_contract_stability_window/ohlcv.parquet
+    symbol_reference_path: ../data/qualification/historical_contract_stability_window/symbol_reference.parquet
+    corporate_actions_path: ../data/qualification/historical_contract_stability_window/corporate_actions.parquet
+    earnings_events_path: ../data/qualification/historical_contract_stability_window/earnings_events.parquet
+    features_path: ../data/qualification/historical_contract_stability_window/features.parquet

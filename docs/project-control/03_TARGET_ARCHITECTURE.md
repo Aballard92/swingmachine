@@ -45,7 +45,8 @@ Runtime/paper/shadow flow exists but is currently not authorised for paper/live 
 ## Integration points
 
 - Trading212 repo local research DBs for Alpaca and Hugging Face historical data.
-- Alpaca/Hugging Face provider panels through `config/swing_machine_v0_1_trading212_sources.yaml`.
+- Alpaca/Hugging Face provider panels through an ignored machine-local config
+  copied from `config/swing_machine_v0_1_trading212_sources.example.yaml`.
 - Local SQLite runtime/audit databases.
 - CLI commands via `swingmachine` entrypoint.
 - Optional paper broker/shadow comparison paths.

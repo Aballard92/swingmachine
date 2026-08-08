@@ -1,0 +1,41 @@
+baseline_id: swing_machine_v0_1
+# Historical plan retained for reproducibility. It grants no current serious-run,
+# holdout, runtime, paper, live, broker, provider, or acquisition authority.
+plan_version: swing_machine_v0_1_selected_period_plan_v1
+profile_alias_path: swing_machine_v0_1_profile.yaml
+required_data_contract_version: prepared_market_and_historical_panel_v1
+run_policy: DRY_RUN_REPLAY_ONLY
+serious_full_run_policy: PROHIBITED_UNTIL_QUALIFIED
+required_artifacts:
+  - baseline_report_package.json
+  - baseline_parity_report.json
+  - freeze_readiness.json
+  - replay_summary.json
+  - qualification_checklist.json
+safety_controls:
+  - This broad plan is offline historical replay only.
+  - Broker submission, live trading, production deployment, and destructive database writes are prohibited.
+  - Any missing data must block the selected period rather than being silently filled.
+  - The plan extends qualification evidence; it does not authorize live or paper runtime execution.
+periods:
+  - period_id: historical_broad_2024_06_to_2025_07_v0_1
+    title: Historical broad offline replay evidence window
+    start_date: 2024-06-03
+    end_date: 2025-07-31
+    purpose: Preserve the historical broad offline replay specification used by the frozen v0.1 evidence, spanning the contract-stability and medium qualification windows.
+    minimum_session_count: 240
+    maximum_symbol_count: 150
+    data_requirements:
+      - Historical bars cover the full lookback needed by configured indicators before the first replay session.
+      - Corporate-action-adjusted daily OHLCV inputs are used consistently by research and runtime-compatible paths.
+      - Universe membership evidence is available for every candidate symbol.
+      - Missing-bar and stale-data decisions are recorded as rejection or blocker evidence.
+    required_artifacts:
+      - baseline_report_package.json
+      - baseline_parity_report.json
+      - replay_summary.json
+    acceptance_evidence:
+      - Historical data preflight passes with no blockers.
+      - Research and runtime-compatible replay summaries pass.
+      - Research/runtime package parity passes with zero material differences.
+      - Risk and order plans remain dry-run/replay artifacts only.

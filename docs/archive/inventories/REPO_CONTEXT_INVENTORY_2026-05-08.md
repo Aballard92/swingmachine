@@ -4,6 +4,13 @@ Created: 2026-05-08
 Repo confirmed: `/home/alexballard92/swingmachine`
 Write scope used for this audit: `docs/project-control/` only
 
+Status: `HISTORICAL_INVENTORY`
+
+Current-status override, 2026-08-08: this inventory predates the completed
+PULLBACK diagnostic, accepted `SWING-PC-003` parking decision, and completed
+`SWING-PC-005A` / `SWING-PC-006` screens. Use `02_CURRENT_STATE.md`,
+`04_DECISION_LOG.md`, and `05_BACKLOG_AND_ROADMAP.md` for current decisions.
+
 ## Audit scope
 
 This is a practical source-of-truth inventory for deciding what belongs in a ChatGPT Project. It covers repo documents, obvious high-context config files, code-map files, test-map files, and generated report areas that affect current project state.
@@ -17,7 +24,9 @@ The repo is a deterministic daily-bar swing trading engine in build/research/qua
 - Paper trading: blocked.
 - Serious full run: blocked until a revised candidate is selected for offline qualification.
 - Current candidate: no revised baseline candidate selected.
-- Next best work: design deeper PULLBACK fill/lifecycle replay research.
+- Historical next step at this snapshot: design deeper PULLBACK fill/lifecycle
+  replay research. That work later completed and PULLBACK is now
+  `PARKED_INCONCLUSIVE`.
 - TIGHT_BASE: should be isolated from the next candidate unless explicitly redesigned.
 - Hugging Face broad data: acquisition deferred until an Alpaca-side hypothesis shows edge.
 
@@ -26,8 +35,8 @@ The repo is a deterministic daily-bar swing trading engine in build/research/qua
 | File path | Type | Summary | Relevance | Upload to ChatGPT Project | Why it matters | Stale, duplicate, or contradiction notes |
 | --- | --- | --- | --- | --- | --- | --- |
 | `README.md` | setup | Main repo overview, current scope, setup, paper/shadow/audit workflow, data contracts, migrations, runtime commands, quality gates. | High | Yes | Best compact entrypoint for the repo. | Appears broadly current, but project status decisions are more current in newer v0.1 docs. |
-| `BUILD_HANDOVER_AND_AUDIT.md` | architecture | Large handover and critical assessment from 2026-04-30 covering north star, architecture, engines, gaps. | Medium | Maybe | Useful background for architecture and original build audit. | Older than v0.1 discovery/design docs; upload only if historical context is needed. |
-| `SESSION_CONTINUATION.md` | roadmap | Saved continuation note from 2026-04-29 with current intent, validation, next moves. | Archive | No | Useful only for old recovery context. | Stale; superseded by implementation log, backlog, and next-day decision docs. |
+| `docs/archive/build-phase/BUILD_HANDOVER_AND_AUDIT.md` | architecture | Large handover and critical assessment from 2026-04-30 covering north star, architecture, engines, gaps. | Medium | Maybe | Useful background for architecture and original build audit. | Older than v0.1 discovery/design docs; upload only if historical context is needed. |
+| `docs/archive/build-phase/SESSION_CONTINUATION.md` | roadmap | Saved continuation note from 2026-04-29 with current intent, validation, next moves. | Archive | No | Useful only for old recovery context. | Stale; superseded by implementation log, backlog, and next-day decision docs. |
 | `docs/swing_machine_current_state_review.md` | product | Specific current-state review of existing swing-related state, architecture, data, runtime, research, testing, risks. | High | Yes | One of the best source-of-truth docs for where the repo stood at baseline discovery. | Created 2026-05-05; should be supplemented with latest blocker/selection docs. |
 | `docs/swing_machine_v0_1_baseline_definition.md` | product | Defines what `swing_machine_v0_1` should mean: purpose, scope, universe, candidates, signals, risk, lifecycle, reporting, qualification. | High | Yes | Core product definition. | Still relevant; latest decisions say no candidate currently selected. |
 | `docs/swing_machine_v0_1_solution_design.md` | architecture | Technical target architecture, domain model, contracts, config/profile rules, parity, reporting, testing, delivery sequence. | High | Yes | Core implementation design. | May not include every later report artifact; pair with latest decision docs. |

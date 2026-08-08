@@ -1,0 +1,131 @@
+# Frozen historical research configuration used by the completed SWING-PC-005A
+# and SWING-PC-006 evidence lanes. Those authorisations are consumed; this file
+# does not authorise another screen, holdout access, profile build, or trading.
+
+strategy:
+  name: MPS_1
+  description: Long-only momentum pullback swing strategy
+  bar_frequency: 1d
+  direction: long_only
+  signal_time: official_close
+  execution_time: next_session_open
+  pyramiding: false
+
+universe:
+  exchanges: [NYSE, NASDAQ, NYSE_AMERICAN]
+  security_types: [common_stock]
+  excluded_types: [ETF, ETN, ADR, preferred, warrant, right, closed_end_fund, OTC, SPAC_unit]
+  country_of_primary_listing: US
+  minimum_price: 10.0
+  minimum_market_cap: 2000000000
+  median_dollar_volume_period: 20
+  minimum_median_dollar_volume: 25000000
+  minimum_history_sessions: 253
+
+features:
+  sma_periods: {short: 20, intermediate: 50, long: 200}
+  long_sma_slope_lookback: 20
+  atr: {period: 20, method: wilder}
+  momentum:
+    legs:
+      - {start_lag: 126, end_lag: 5, weight: 0.50}
+      - {start_lag: 252, end_lag: 21, weight: 0.50}
+    enter_percentile: 0.90
+    hold_percentile: 0.70
+
+trend:
+  require_close_above_sma50: true
+  require_sma50_above_sma200: true
+  require_rising_sma200: true
+
+pullback:
+  peak_lookback_sessions: 20
+  sma_touch_period: 20
+  sma_touch_lookback_sessions: 5
+  minimum_depth_atr: 0.75
+  maximum_depth_atr: 2.50
+  require_close_above_prior_high: true
+  minimum_close_location_value: 0.70
+  require_close_above_sma50: true
+
+entry:
+  order_type: opening_auction_market
+  signal_valid_sessions: 1
+  maximum_absolute_gap_atr: 0.50
+  no_pyramiding: true
+
+initial_stop:
+  swing_low_lookback_sessions: 5
+  structure_buffer_atr: 0.25
+  minimum_volatility_distance_atr: 1.50
+  maximum_risk_distance_atr: 3.00
+  maximum_risk_distance_fraction: 0.08
+
+trailing_stop:
+  activation_r: 1.00
+  distance_atr: 2.50
+  reference_price: highest_close
+  never_loosen: true
+  activate_next_session: true
+
+exits:
+  momentum_hold_percentile: 0.70
+  close_below_sma_period: 50
+  failure_check_after_sessions: 7
+  failure_minimum_mfe_r: 0.50
+  failure_requires_close_at_or_below_entry: true
+  maximum_holding_sessions: 30
+  fixed_profit_target: null
+
+risk:
+  base_risk_fraction_per_trade: 0.0035
+  maximum_positions: 8
+  maximum_gross_exposure: 1.00
+  maximum_position_notional_fraction: 0.125
+  maximum_portfolio_heat: 0.020
+  maximum_sector_notional_fraction: 0.25
+  maximum_sector_heat: 0.0075
+  maximum_adv_participation: 0.02
+  post_fill_risk_tolerance: 1.05
+  allow_leverage: false
+
+market_regime:
+  benchmark: SPY
+  sma_period: 200
+  below_sma_multiplier: 0.50
+  realised_volatility_period: 20
+  annualisation_sessions: 252
+  target_annualised_volatility: 0.20
+  minimum_multiplier: 0.25
+  maximum_multiplier: 1.00
+  allow_volatility_leverage: false
+
+earnings:
+  enabled: false
+  avoid_entries_within_sessions: 5
+  exit_before_event: true
+  require_point_in_time_calendar: true
+
+execution:
+  baseline_one_way_cost_bps: 5
+  stress_one_way_cost_bps: [10, 20, 50]
+  gap_through_stop_fill: opening_price
+  intraday_stop_fill: stop_price
+  apply_adverse_slippage: true
+  partial_fills_enabled: false
+
+drawdown_controls:
+  half_risk_drawdown: 0.08
+  stop_new_entries_drawdown: 0.12
+  recovery_drawdown: 0.08
+  clean_sessions_before_recovery: 10
+
+logging:
+  write_daily_equity: true
+  write_positions: true
+  write_orders: true
+  write_fills: true
+  write_rejected_orders: true
+  write_feature_snapshot: true
+  write_decision_reasons: true
+  write_data_version_hash: true
