@@ -3,9 +3,9 @@
 ## Canonical starting point
 
 - Repository: `Aballard92/swingmachine`
-- Alignment branch: `agent/house-alignment-20260808`
-- Alignment base: `a9b203870383961494991ea65efd0f40cc66e4a1`
-- Canonical handoff revision: the reviewed Git commit containing this file.
+- Canonical branch: `main`
+- Merged alignment revision: `025cd92dec1dd15b2dd7177aea8963a16a184dcc`
+- Canonical handoff revision: the latest `origin/main` commit containing this file.
 - Current authority: this directory, in the precedence order defined by
   `AGENTS.md`.
 
@@ -50,7 +50,7 @@ paper/runtime work, and broker/API access require a new explicit authorization.
 
 ## Baseline verification
 
-The alignment pull request records the authoritative command results for lint,
-core typing, full tests, DeliveryOS conformance, and repository hygiene. A helper
+Merged PR #14 records the authoritative command results for lint, core typing,
+full tests, DeliveryOS conformance, and repository hygiene. A helper
 should re-run only the checks authorized for their task and report exact results;
 passing tests are engineering evidence, not evidence of trading edge.

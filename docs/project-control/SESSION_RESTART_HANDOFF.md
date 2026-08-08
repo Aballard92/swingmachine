@@ -2,9 +2,9 @@
 
 Saved: 2026-08-08
 Repository: `Aballard92/swingmachine`
-Alignment branch: `agent/house-alignment-20260808`
-Alignment base: `a9b203870383961494991ea65efd0f40cc66e4a1`
-Canonical revision: the reviewed Git commit containing this file.
+Canonical branch: `main`
+Merged alignment revision: `025cd92dec1dd15b2dd7177aea8963a16a184dcc`
+Canonical revision: the latest `origin/main` commit containing this file.
 
 ## Current truth
 
@@ -119,13 +119,13 @@ The single implementation authorization was granted and consumed:
 
 ## Alignment and preservation warning
 
-The 2026-08-08 house-alignment work was built on a dedicated branch from GitHub
-`main`. The pre-alignment local checkout and its uncommitted source/evidence state
-were checkpointed outside the repository and deliberately left untouched.
+The 2026-08-08 house-alignment work was merged through PR #14. The pre-alignment
+local checkout and its uncommitted source/evidence state were checkpointed outside
+the repository and preserved at
+`/home/alexballard92/swingmachine-pre-alignment-20260808`.
 
-Do not destructively reset or clean that preserved checkout. After the alignment
-pull request is accepted, any local sync must be separately verified and must not
-discard the checkpoint or uncommitted evidence.
+Do not destructively reset or clean that preserved archive. The canonical checkout
+at `/home/alexballard92/swingmachine` is the clean merged `main` starting point.
 
 ## Resume instructions
 

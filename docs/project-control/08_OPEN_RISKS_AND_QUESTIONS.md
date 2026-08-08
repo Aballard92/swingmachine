@@ -33,12 +33,13 @@
 
 ## Local Sync / Checkout Warning
 
-- The pre-alignment local checkout contained a large uncommitted baseline and must
-  remain preserved until the house-alignment pull request is accepted.
-- Review and publication work occurs on the dedicated house-alignment branch made
-  from GitHub `main`; do not destructively clean or reset the preserved checkout.
-- After the alignment pull request is merged, update the preserved checkout only
-  through a separately verified, non-destructive sync procedure.
+- The pre-alignment checkout is preserved at
+  `/home/alexballard92/swingmachine-pre-alignment-20260808`, with a separately
+  verified checkpoint under `/home/alexballard92/swingmachine-checkpoints/`.
+- The canonical checkout is `/home/alexballard92/swingmachine` on clean `main`.
+- Do not destructively clean or reset the preserved archive. Retain it until its
+  local evidence has been separately dispositioned and deletion is explicitly
+  approved.
 
 ## Data/API risks
 
