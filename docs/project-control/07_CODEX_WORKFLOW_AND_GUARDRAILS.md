@@ -117,11 +117,11 @@ Unless the active issue explicitly authorises them, Codex must not:
 
 Trading212 is read-only from the SwingMachine project.
 
-A SwingMachine issue may use previously accepted cross-project architecture knowledge,
-but it may not inspect local Trading212 state, edit Trading212 files, run state-changing
-commands there, create/update its issues, branch/commit/push, or otherwise mutate it.
-Any Trading212 mutation requires a separate explicit Sponsor-approved Trading212 issue
-contract.
+A SwingMachine issue may explicitly authorise read-only Trading212 inspection for a
+bounded cross-project evidence question. That never grants mutation authority. A
+SwingMachine task may not edit Trading212 files, run state-changing commands there,
+create/update its issues, branch/commit/push, or otherwise mutate it. Any Trading212
+mutation requires a separate explicit Sponsor-approved Trading212 issue contract.
 
 ## Definition of Ready
 
