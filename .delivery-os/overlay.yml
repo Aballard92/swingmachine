@@ -13,6 +13,10 @@ delivery:
     - No revised strategy profile, candidate selection, qualification progression or readiness claim is inferred from adoption or conformance.
     - Current strategy-family isolation and qualification gates remain authoritative, including TIGHT_BASE isolation unless redesigned and requalified.
     - Backtests are evidence only, no forced trades are allowed and no edge or profitability claim is inferred.
+    - Every bounded Codex delivery task uses one authoritative GitHub issue contract before execution; chat analysis alone does not grant delivery scope.
+    - Repository changes must travel on an issue-linked branch and pull request; direct-to-main delivery is prohibited and merge requires ChatGPT review plus explicit Sponsor acceptance.
+    - Detailed completion evidence belongs on the authoritative issue and the chat handoff remains compact.
+    - Trading212 is read-only from SwingMachine; any Trading212 mutation requires a separate explicit Sponsor-approved Trading212 issue contract.
 shared_rules:
   issue_as_contract: required
   exact_release_pin: required

@@ -1,195 +1,224 @@
 # 07 Codex Workflow and Guardrails - swingmachine
 
-## Repo Operating Model v1
+## Operating model
 
-- GitHub repo: durable record.
-- ChatGPT Project: control room, Product Owner, Solution Architect, Delivery
-  Controller, and source-of-truth steward.
-- Codex: bounded repo operator, BA, Developer, and Tester for authorised tasks only.
-- Alex/user: final decision-maker.
+SwingMachine uses DeliveryOS 1.0.0 for shared delivery mechanics with stricter local
+controls.
 
-Codex executes bounded tasks. Codex must not own product direction, architecture,
-roadmap, strategy, or prioritisation unless explicitly asked to propose options.
+- GitHub: durable issue contract, branch/PR history, and delivery evidence.
+- ChatGPT Project: Product Owner, Solution Architect, Delivery Controller,
+  source-of-truth steward, issue-contract author, and independent reviewer.
+- Codex: bounded BA, Developer, Tester, and Repo Operator.
+- Alex/user: Sponsor and final decision-maker.
 
-## Source Of Truth
+Codex does not own product direction, trading strategy, architecture, roadmap, or
+prioritisation unless explicitly asked to propose options.
 
-Use the current source of truth in this order:
+## Source of truth
+
+Product/domain authority remains:
 
 1. `docs/project-control/*.md`
-2. Current repo code, tests, and config where directly relevant to the bounded task
+2. Current repo code, tests, and config where directly relevant
 3. Older docs, runbooks, and reports only as historical evidence
 
-Generated reports may be stale and must not override current project-control gates.
-Older paper-readiness or runbook documents are not current approval.
+For one bounded delivery, the authoritative GitHub issue is the frozen execution
+contract. It may narrow permissions but cannot override stricter product/domain rules.
+A conflict is a stop condition.
 
-## Codex Default Permissions
+## DeliveryOS GitHub-first default
 
-By default, Codex may inspect the repo and report findings.
+Every bounded Codex delivery task must have one authoritative GitHub issue before
+execution. Large chat prompts are no longer the durable task contract.
 
-Codex may edit only within an explicitly authorised scope. Codex may run checks only
-when authorised or clearly included in the task.
+ChatGPT creates and maintains the issue. The issue freezes:
 
-Codex must not, unless explicitly authorised:
+- outcome and `why_now`;
+- accepted state;
+- included/excluded scope;
+- architecture and ownership;
+- trust model and evidence limits;
+- allowed/prohibited permissions;
+- deliverables;
+- acceptance criteria;
+- independent tests/checks;
+- evidence required;
+- blocking-defect versus follow-up-hardening policy;
+- stop conditions;
+- change control;
+- PR/merge policy;
+- handover.
 
-- Modify application code.
-- Stage, commit, push, create branches, open PRs, create/update GitHub issues, or
-  comment on GitHub issues.
-- Run live, API, broker, runtime, or state-changing commands.
-- Run paper trading or live trading.
-- Run production or deployment commands.
-- Install packages.
-- Modify databases, runtime state, secrets, logs, generated dumps, or generated
-  reports.
-- Expose secrets, logs, runtime DBs, state, or generated dumps.
-- Make hidden strategy changes via `.env`.
-- Build a revised strategy profile.
-- Treat old paper-readiness or paper runbooks as current approval.
+Once execution begins, Codex must not widen the contract. A material change requires an
+explicit issue amendment drafted through ChatGPT and accepted by the Sponsor.
 
-## Git Rules
+## Standard delivery lifecycle
 
-- Never run `git add .`.
-- Never run `git add -A`.
-- Never bulk-stage untracked files.
-- Use explicit path staging only when staging is explicitly authorised.
-- Do not stage `README.md` unless specifically authorised.
-- Do not commit, push, create branches, open PRs, create/update GitHub issues, or
-  comment on GitHub issues unless explicitly authorised.
-- Report final git status after any authorised git task.
+1. ChatGPT creates the GitHub issue contract.
+2. Sponsor accepts the bounded scope/permissions.
+3. Codex reads the issue and confirms repo/base identity plus existing git state.
+4. If repository files will change, Codex works on the issue-linked branch only.
+5. Codex executes only the frozen contract and runs only authorised checks.
+6. Codex opens/updates the issue-linked PR when repository changes are part of scope.
+7. Codex posts detailed completion/blocker evidence to the issue.
+8. Codex returns only the compact GitHub handoff in chat.
+9. ChatGPT independently reviews the issue, diff, evidence, and checks.
+10. Sponsor chooses accept, revise, reject, rollback, defer, or follow-up.
+11. Merge and issue closure happen only after explicit Sponsor acceptance.
 
-## Standard Task Lifecycle
+A PR, green CI, passing conformance, or Codex completion statement does not itself grant
+acceptance.
 
-1. ChatGPT defines the task.
-2. Codex confirms repo identity and git state.
-3. Codex confirms staged, dirty, and untracked files.
-4. Codex executes only the authorised scope.
-5. Codex runs authorised checks.
-6. Codex records evidence.
-7. Codex reports back.
-8. ChatGPT reviews.
-9. Alex decides accept, revise, rollback, or follow-up.
+## Repository-change policy
 
-## Definition Of Ready
+If a task changes repository files:
 
-A task is ready only if it includes:
+- one authoritative issue is required;
+- use an issue-linked branch from the authorised base;
+- direct-to-`main` delivery is prohibited;
+- stage explicit paths only;
+- never use `git add .` or `git add -A`;
+- preserve unrelated staged/dirty/untracked work;
+- one coherent issue-linked PR should carry the delivery;
+- required fixes for frozen acceptance stay in the same feature unless the Sponsor
+  explicitly changes the contract;
+- merge is Sponsor-controlled after ChatGPT review.
 
-- Task ID.
-- Repo name.
-- Goal.
-- Allowed files/folders.
-- Prohibited files/folders.
-- Whether edits are allowed.
-- Whether tests/checks are allowed.
-- Whether live/API/broker/runtime actions are allowed.
-- Whether GitHub issue comments are allowed.
-- Whether staging/commit/push/PR is allowed.
-- Acceptance criteria.
-- Reporting format.
+If a bounded task produces no repository change, no empty PR is required; the issue
+still carries the contract and detailed evidence.
 
-If these are missing, Codex should ask for clarification or propose a bounded plan
-before editing.
+## GitHub permissions
 
-## Definition Of Done
+For an active authorised issue, Codex may read that issue and post evidence only when
+its contract allows GitHub evidence.
 
-A task is done only when Codex reports:
+Codex must not create, rewrite, close, relabel, reprioritise, or broaden GitHub issues
+unless separately authorised. It must not infer GitHub mutation rights from repository
+access.
 
-- Task outcome.
-- Repo identity checked.
-- Pre-existing git state.
-- Files changed.
-- Files inspected.
-- Commands/checks run.
-- Exact results.
-- Checks skipped and why.
-- Acceptance criteria status.
-- Risks or blockers.
-- Remaining unknowns.
-- Recommended next action.
+## Default prohibited actions
 
-For documentation-only tasks, Done means the requested docs exist in the authorised
-folder and no out-of-scope files were modified.
+Unless the active issue explicitly authorises them, Codex must not:
 
-## Normal Chat Reporting
+- modify application code, tests, config, data, reports, databases, runtime state,
+  secrets, logs, or generated dumps;
+- install packages;
+- run provider/API/network acquisition;
+- run broker/account/order actions;
+- run paper or live trading;
+- run production/deployment commands;
+- make hidden strategy changes through `.env`;
+- build or select a revised strategy profile;
+- open Gate 2 or the frozen holdout;
+- use old runbooks as permission;
+- mutate another repository.
 
-Use normal chat reporting for audits, documentation-only tasks, local implementation
-tasks, and any task where GitHub issue workflow has not been explicitly authorised.
+## Trading212 hard boundary
 
-Final reports should include the Definition of Done fields above and any user-specified
-reporting format.
+Trading212 is read-only from the SwingMachine project.
 
-## GitHub Evidence Rule
+A SwingMachine issue may explicitly authorise read-only Trading212 inspection for a
+bounded cross-project evidence question. That never grants mutation authority. A
+SwingMachine task may not edit Trading212 files, run state-changing commands there,
+create/update its issues, branch/commit/push, or otherwise mutate it. Any Trading212
+mutation requires a separate explicit Sponsor-approved Trading212 issue contract.
 
-Use GitHub evidence only when explicitly authorised.
+## Definition of Ready
 
-If GitHub evidence is authorised, detailed evidence must actually be posted to the
-GitHub issue before Codex uses the compact handoff. If no issue exists and Codex is not
-authorised to create/update one, Codex must use normal chat reporting.
+A Codex task is Ready when the authoritative issue has all DeliveryOS issue-contract
+fields and makes these permissions unambiguous:
 
-Detailed GitHub issue evidence should include files changed, files inspected, checks
-run, exact results, risks, acceptance criteria status, and recommended next action.
-GitHub workflow does not grant permission to broaden scope.
+- repo and task identity;
+- edits and allowed paths;
+- prohibited paths/surfaces;
+- tests/checks;
+- GitHub evidence/comment permission;
+- branch/commit/push/PR permission;
+- provider/API/data permission;
+- broker/paper/live/runtime permission;
+- acceptance criteria;
+- evidence/reporting format;
+- stop conditions.
 
-## Standard Compact GitHub Handoff
+If a material field is absent or conflicts with current project rules, stop before
+editing and escalate through the issue.
+
+## Definition of Done
+
+Detailed issue evidence must record:
+
+1. task outcome;
+2. repo and issue identity;
+3. base/branch/HEAD and pre-existing git state;
+4. files inspected;
+5. files changed;
+6. commands/checks run and exact results;
+7. checks skipped and why;
+8. acceptance-criteria status;
+9. blocking defects or risks;
+10. remaining unknowns;
+11. PR/change identity where applicable;
+12. exactly one recommended next action when requested;
+13. explicit confirmation that prohibited surfaces remained untouched.
+
+For documentation-only tasks, Done still requires the requested artifact, scope
+integrity, evidence, and reviewability.
+
+## Compact Codex handoff
+
+After evidence is posted to GitHub, Codex should return:
 
 ```text
 GITHUB_REVIEW_READY:
 <TASK-ID task title> complete.
 GitHub issue: #<issue number> <issue URL>
-Summary posted as GitHub issue comment.
+PR: #<pr number> <PR URL> | NONE (no repository change)
+Evidence posted to issue.
 Recommended next action: <one short sentence>
 ```
 
-PR links belong in the detailed GitHub issue evidence comment, not in the compact
-handoff.
+If a stop condition fires:
 
-## Scope-Control Rules
+```text
+GITHUB_BLOCKED:
+<TASK-ID task title> stopped.
+GitHub issue: #<issue number> <issue URL>
+Stop condition: <one sentence>
+Evidence posted to issue.
+```
 
-- Respect the allowed file scope exactly.
-- Use small controlled batches.
-- Do not create nested repo folders.
-- Do not modify app code during documentation-only tasks.
-- Do not modify app code unless explicitly authorised.
-- Do not refactor opportunistically.
-- Do not fix unrelated bugs without approval.
-- Do not run live/API/paper/broker/runtime/state-changing commands without explicit
-  approval of the exact command.
-- Do not modify DB, state, secrets, or logs without explicit approval.
-- Do not install packages unless explicitly authorised.
-- Do not make strategy behavior changes from `.env`.
-- Do not treat old runbooks as current when newer gate docs block execution.
-- If evidence contradicts the intended task, stop and report the contradiction.
+ChatGPT reads the durable evidence directly; Codex should not duplicate a large report
+into chat unless specifically asked.
 
-## SwingMachine Trading And Research Gates
+## Current SwingMachine research gates
 
-- Current phase is offline research and qualification only.
-- Paper trading is blocked.
-- Live trading is prohibited.
-- Broker/API/live commands require exact human approval.
+- Current phase: offline research and qualification only.
+- Paper trading: blocked.
+- Live trading: prohibited.
 - No revised baseline candidate is selected.
-- Serious full qualification is blocked until a revised candidate is selected.
-- PULLBACK is `PARKED_INCONCLUSIVE`; it is not the current implementation lane.
-- H1 and H2 are parked after `NO_FAMILY_PASSES_DISCOVERY`.
-- Gate 2 and the frozen holdout remain unopened.
-- No further strategy-screen implementation ticket is currently authorised.
+- PULLBACK remains `PARKED_INCONCLUSIVE`.
 - TIGHT_BASE remains isolated unless explicitly redesigned and requalified.
-- Broad provider/data acquisition is stopped unless a new bounded task satisfies
-  the five-part exception in
-  `10_HISTORICAL_DATA_LIMITATION_ACCEPTANCE.md`.
-- Alpaca is the primary broad research source for now.
-- Strategy behaviour must be explicit config/profile behaviour, not hidden `.env`
-  behaviour.
+- H1/H2 were parked after `NO_FAMILY_PASSES_DISCOVERY`, but the suitability of that
+  evidence for programme-level strategy rejection is now under research-validity
+  review.
+- Gate 2 and the frozen holdout remain unopened.
+- No new strategy screen or revised profile is authorised before the validity review.
+- Further provider/data acquisition requires a new decision-critical issue satisfying
+  `10_HISTORICAL_DATA_LIMITATION_ACCEPTANCE.md`; unused provider credit is not
+  permission.
+- Strategy behaviour remains explicit in reviewed config/profile files, never hidden
+  environment settings.
 - Backtests are evidence, not proof.
-- No forced trades.
-- Preserve risk/reward discipline, position sizing, and drawdown controls.
-- No guaranteed profitability claims.
-- Do not expose secrets.
+- No forced trades or guaranteed-profitability claims.
 
-## Suggested Model/Reasoning Guidance By Task Type
+## Suggested model/reasoning guidance
 
 | Task type | Suggested reasoning | Notes |
 | --- | --- | --- |
-| Small docs update | Low/medium | Use current project-control docs. |
-| Repo audit/synthesis | Medium | Read bounded source docs, avoid generated-report sprawl. |
-| Code implementation | Medium/high | Use focused file reads and tests. |
-| Architecture/design proposal | High | ChatGPT Project should own; Codex can draft options. |
-| Trading safety decision | High | Human sponsor must approve final decision. |
-| Paper/live operation | High plus explicit human approval | Codex must not execute without exact command approval. |
+| Small docs update | Low/medium | Current project-control + active issue. |
+| Repo audit/synthesis | Medium/high | Exact lineage and evidence; avoid generated-report sprawl. |
+| Code implementation | Medium/high | Focused paths and independent tests. |
+| Architecture/design proposal | High | ChatGPT owns direction; Codex may evidence/test bounded questions. |
+| Research-validity/backtest logic | Highest available | Can change interpretation of trading evidence. |
+| Trading safety decision | High | Sponsor owns final decision. |
+| Paper/live operation | Highest + exact human approval | Not currently authorised. |
