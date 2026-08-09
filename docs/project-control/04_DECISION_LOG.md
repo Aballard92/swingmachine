@@ -6,6 +6,10 @@ This is a consolidated decision log for ChatGPT Project context. It is not a ful
 
 | Decision | Status | Rationale | Source context |
 | --- | --- | --- | --- |
+| DeliveryOS GitHub issue-as-contract is the default workflow for bounded Codex delivery. | Current | SwingMachine already accepts DeliveryOS 1.0.0. GitHub should hold the durable scope, permissions, acceptance and evidence so chat can remain the control room and Codex handoffs can stay compact. Repository changes travel through an issue-linked branch/PR; Sponsor acceptance remains explicit. | GitHub issue `#15` / `SWING-DELIVERY-001`; `.delivery-os.yml`; `.delivery-os/overlay.yml` |
+| Trading212 is read-only from SwingMachine unless separately authorised. | Current | Cross-project review may inform SwingMachine architecture, but no Trading212 file, issue, branch, PR, runtime or other state may be mutated from a SwingMachine task without a separate explicit Sponsor-approved Trading212 contract. | Sponsor control-room decision; `SWING-DELIVERY-001` |
+| Treat the programme-level meaning of `SWING-PC-006` as provisional pending a bounded research-validity audit. | Current | Independent review identified unresolved questions over discovery-population suitability, carried-position intraday stops, price-series semantics, partition-end accounting and report-to-code provenance. H1/H2 remain parked and no progression is authorised while validity is assessed. | Control-room review after `SWING-XR-001`; planned `SWING-PC-007` |
+| Unused Databento credit is an available future enabler, not acquisition permission. | Current | Any future purchase must follow an exact decision-critical data requirement established by research-validity work and a separately authorised acquisition contract. Provider credit alone does not justify acquisition. | Sponsor control-room decision; `10_HISTORICAL_DATA_LIMITATION_ACCEPTANCE.md` |
 | Accept remaining historical-data unknowns as a research limitation and stop indefinite acquisition. | Current | Existing evidence supports a fail-closed partial research subset, but classification, historical reference, sector, shares, and halt-state gates remain incomplete. More accounts, APIs, downloads, or Vault transfers are not justified without a bounded decision-critical need. | `docs/project-control/10_HISTORICAL_DATA_LIMITATION_ACCEPTANCE.md` |
 | No revised baseline candidate is selected. | Current | Evidence does not justify building a revised profile yet. | `docs/swing_machine_v0_1_next_baseline_candidate_selection.md` |
 | Paper trading is blocked. | Current | Research edge, lifecycle, benchmark, provider-positive-edge, and sample-size blockers remain open. | Latest blocker/selection docs and inventory. |
@@ -15,8 +19,8 @@ This is a consolidated decision log for ChatGPT Project context. It is not a ful
 | The Option B robustness appendix is not authorized. | Current | Alex accepted Option A; the alternative could not create independent fills or authorize a profile. | `docs/project-control/SWING-PC-003_pullback_lane_decision_packet.md` |
 | `SWING-PC-005` broader offline hypothesis-search design is accepted. | Current | Alex accepted the fixed two-family, common-lifecycle, sequential-gate design with `ACCEPT_SWING_PC_005_DESIGN_V1`. | `docs/project-control/SWING-PC-005_broader_offline_hypothesis_search_design.md` |
 | The single authorized `SWING-PC-005A` execution stopped at Gate 0. | Current | No frozen SPY benchmark exists; all 974 dividend events lack payment dates; and 81 terminal delisted rows lack outcome semantics. The required outcome is `STOP_SOURCE_OR_TEMPORALITY_INVALID`; no strategy outcome or holdout was opened. | `reports/swing_machine_v0_1/broader_offline_hypothesis_screen_20260729T171017Z/mps_hypothesis_screen.md` |
-| `SWING-PC-006` completed with `NO_FAMILY_PASSES_DISCOVERY`. | Current | The limitation-tolerant absolute-return fallback used the same fixed families and common lifecycle. H1 was positive on mean PnL/R but failed negative-median and 61.76% symbol-concentration gates. H2 was negative, traded only three securities, and was 79.31% concentrated. Gate 2 and holdout remained unopened. | `reports/swing_machine_v0_1/limitation_tolerant_screen_20260729T194422Z/mps_limitation_screen.md` |
-| No further benchmark acquisition is justified in this lane. | Current | Stooq returned browser-verification HTML and the sole Yahoo fallback returned HTTP 429. The agreed absolute-only fallback still failed before validation, so more accounts, retries, or data sources cannot repair the decisive discovery evidence. | `docs/project-control/SWING-PC-006_limitation_tolerant_exploratory_screen_design.md` |
+| `SWING-PC-006` completed with `NO_FAMILY_PASSES_DISCOVERY`. | Current evidence result | The limitation-tolerant absolute-return fallback used the same fixed families and common lifecycle. H1 was positive on mean PnL/R but failed negative-median and 61.76% symbol-concentration gates. H2 was negative, traded only three securities, and was 79.31% concentrated. Gate 2 and holdout remained unopened. The result is preserved, while its suitability for programme-level strategy rejection is under research-validity review. | `reports/swing_machine_v0_1/limitation_tolerant_screen_20260729T194422Z/mps_limitation_screen.md`; planned `SWING-PC-007` |
+| No further benchmark acquisition is justified in the prior lane. | Current | Stooq returned browser-verification HTML and the sole Yahoo fallback returned HTTP 429. The agreed absolute-only fallback still failed before validation, so more accounts, retries, or data sources were not justified for that lane. A future new data requirement must be separately authorised. | `docs/project-control/SWING-PC-006_limitation_tolerant_exploratory_screen_design.md`; `10_HISTORICAL_DATA_LIMITATION_ACCEPTANCE.md` |
 | TIGHT_BASE should be isolated from the next baseline candidate. | Current | TIGHT_BASE has negative lifecycle and cost-stress evidence. | TIGHT_BASE isolation packet, summarized in project-control inventory. |
 | Broad Hugging Face or replacement-source acquisition is stopped for the current lane. | Current | No Alpaca-side candidate proves edge, existing historical unknowns are accepted fail closed, and further acquisition requires a new bounded five-part authorization. | `docs/project-control/10_HISTORICAL_DATA_LIMITATION_ACCEPTANCE.md` |
 | Strategy behavior must be explicit config/profile behavior, not hidden `.env`. | Current | Reviewable, serialisable strategy config is required for qualification. | Baseline and solution design docs. |
@@ -26,6 +30,8 @@ This is a consolidated decision log for ChatGPT Project context. It is not a ful
 
 | Approach | Status | Why rejected/superseded |
 | --- | --- | --- |
+| Large chat prompt as the durable Codex task contract. | Superseded | DeliveryOS issue-as-contract now makes the GitHub issue authoritative; chat sends a compact pointer and receives a compact handoff. |
+| Direct-to-main delivery for bounded Codex work. | Rejected | Repository changes require an issue-linked branch/PR and explicit Sponsor acceptance after review. |
 | Use deprecated v1 strategy spec/config. | Rejected | Explicitly marked deprecated; v2 spec/config and v0.1 docs govern. |
 | Start paper trading from earlier engineering gate evidence. | Superseded/rejected now | Later edge/profitability analysis blocked paper readiness. |
 | Run serious full qualification immediately. | Rejected now | No revised candidate selected; current gate blocks this. |
@@ -43,10 +49,9 @@ This is a consolidated decision log for ChatGPT Project context. It is not a ful
 | Historical freeze/replay packets | Useful evidence, but current candidate selection has moved on. |
 | Full backlog and implementation log | Valuable history, too large and mixed with completed/superseded work. |
 
-## Unknowns needing sponsor or ChatGPT Product Owner confirmation
+## Unknowns needing Sponsor or ChatGPT Product Owner confirmation
 
 - What sample-size threshold is acceptable before paper-readiness can be reconsidered?
-- What future decision-critical evidence, if any, would justify reopening data
-  acquisition under the five-part stop-condition exception.
-- Whether ChatGPT Project should include source code files for code-aware guidance, or only source-of-truth docs.
+- Which, if any, `SWING-PC-006` validity concerns are confirmed by the bounded audit?
+- What exact future decision-critical data requirement, if any, would justify reopening acquisition under the five-part exception?
 - Whether TIGHT_BASE should be permanently retired or allowed to re-enter after redesign.
