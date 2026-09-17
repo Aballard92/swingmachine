@@ -1,0 +1,45 @@
+Intercontinental Exchange - NYSE Group Announces 2022, 2023 and 2024 Holiday and Early Closings Calendar (https://ir.theice.com/press/news-details/2021/NYSE-Group-Announces-2022-2023-and-2024-Holiday-and-Early-Closings-Calendar/default.aspx)
+citeturn4view1 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"https://ir.theice.com/press/news-details/2021/NYSE-Group-Announces-2022-2023-and-2024-Holiday-and-Early-Closings-Calendar/default.aspx","lineno":69}); Total lines: 120
+L0: [Input] [Input]
+L1: 
+L2: [Input] [Input] [Input]
+L3: 
+L4: cite0†Skip to main content L5: 
+L6:   * cite1†ICE†www.theice.com L7:   * cite2†NYSE†www.nyse.com L8:   * cite3†WebICE†www.theice.com cite4†Login†www.theice.com L9:   * cite5†Press L10:     * cite5†Corporate News Releases L11:     * cite6†View all Press Releases†www.ice.com L12:     * cite7†News Features & Awards L13:   * cite8†Events & Presentations L14:   * cite9†Financials L15:     * cite9†Quarterly Results L16:     * cite10†Annual Reports & Proxy L17:     * cite11†SEC Filings L18:   * cite12†Governance L19:     * cite12†Executive Management Team L20:     * cite13†Board of Directors & Committee Composition L21:     * cite14†Governance Overview L22:   * cite15†Investor Resources L23:     * cite15†Supplemental Information L24:     * cite16†Featured Podcasts L25:     * cite17†Stock Information L26:     * cite18†Corporate Actions L27:     * cite19†Investor FAQs L28:     * cite20†Investor Email Alerts L29:     * cite21†Investor Contacts L30:   * cite22†Corporate Citizenship†www.ice.com L31: [Input: Search] [Input]
+L32: 
+L33: [Button: Menu]
+L34: 
+L35: [Input: Search] [Input]
+L36:   * cite5†Press L37:     * cite5†Corporate News Releases L38:     * cite6†View all Press Releases†www.ice.com L39:     * cite7†News Features & Awards L40:   * cite8†Events & Presentations L41:   * cite9†Financials L42:     * cite9†Quarterly Results L43:     * cite10†Annual Reports & Proxy L44:       * cite23†2019 Letter to Shareholders L45:       * cite24†2020 Letter to Shareholders L46:       * cite25†2021 Letter to Shareholders L47:       * cite26†2022 Letter to Shareholders L48:       * cite27†2023 Letter to Shareholders L49:       * cite28†2024 Letter to Shareholders L50:       * cite29†2025 Letter to Shareholders L51:     * cite11†SEC Filings L52:   * cite12†Governance L53:     * cite12†Executive Management Team L54:     * cite13†Board of Directors & Committee Composition L55:     * cite14†Governance Overview L56:       * cite30†Governance & Charter Documents L57:       * cite31†Contact the Board L58:       * cite32†Advocacy & Collaboration L59:   * cite15†Investor Resources L60:     * cite15†Supplemental Information L61:     * cite16†Featured Podcasts L62:     * cite17†Stock Information L63:     * cite18†Corporate Actions L64:     * cite19†Investor FAQs L65:     * cite20†Investor Email Alerts L66:     * cite21†Investor Contacts L67:   * cite22†Corporate Citizenship†www.ice.com L68: cite5†View all news L69: ### NYSE Group Announces 2022, 2023 and 2024 Holiday and Early Closings Calendar
+L70: 
+L71: Dec 27, 2021
+L72: NEW YORK--(BUSINESS WIRE)-- NYSE Group, part of Intercontinental Exchange, Inc. (NYSE: ICE), a leading global provider of data, technology and market infrastructure, announced today the 2024 holiday calendar and early closing dates for its cash equity markets: New York Stock Exchange, NYSE American Equities, NYSE Arca Equities, NYSE Chicago, and NYSE National, as well as the NYSE American Options, NYSE Arca Options and NYSE Bonds markets.
+L73: The 2022 and 2023 holiday and early closing dates are also set forth below.
+L74: HOLIDAY  | 2022  | 2023  | 2024
+L75: New Year’s Day  | —*  | Monday, January 2
+L76: (New Year’s Day holiday observed)  | Monday, January 1
+L77: Martin Luther King, Jr. Day  | Monday, January 17  | Monday, January 16  | Monday, January 15
+L78: Washington's Birthday  | Monday, February 21  | Monday, February 20  | Monday, February 19
+L79: Good Friday  | Friday, April 15  | Friday, April 7  | Friday, March 29
+L80: Memorial Day  | Monday, May 30  | Monday, May 29  | Monday, May 27
+L81: Juneteenth National Independence Day  | Monday, June 20
+L82: (Juneteenth holiday observed)  | Monday, June 19  | Wednesday, June 19
+L83: Independence Day  | Monday, July 4  | Tuesday, July 4**  | Thursday, July 4**
+L84: Labor Day  | Monday, September 5  | Monday, September 4  | Monday, September 2
+L85: Thanksgiving Day  | Thursday, November 24***  | Thursday, November 23***  | Thursday, November 28***
+L86: Christmas Day  | Monday, December 26
+L87: (Christmas holiday observed)  | Monday, December 25  | Wednesday, December 25****
+L88: * No holiday observed, pursuant to NYSE Rule 7.2, NYSE American Rule 7.2E, NYSE Arca Rules 7.2-O and 7.2-E, NYSE Chicago Rule 7.2, and NYSE National Rule 7.2.
+L89: ** Each market will close early at 1:00 p.m. (1:15 p.m. for eligible options) on Monday, July 3, 2023, and Wednesday, July 3, 2024. Crossing Session orders will be accepted beginning at 1:00 p.m. for continuous executions until 1:30 p.m. on these dates, and NYSE American Equities, NYSE Arca Equities, NYSE Chicago, and NYSE National late trading sessions will close at 5:00 pm. All times are Eastern Time.
+L90: *** Each market will close early at 1:00 p.m. (1:15 p.m. for eligible options) on Friday, November 25, 2022, Friday, November 24, 2023, and Friday, November 29, 2024 (the day after Thanksgiving). Crossing Session orders will be accepted beginning at 1:00 p.m. for continuous executions until 1:30 p.m. on these dates, and NYSE American Equities, NYSE Arca Equities, NYSE Chicago, and NYSE National late trading sessions will close at 5:00 pm. All times are Eastern Time.
+L91: **** Each market will close early at 1:00 p.m. (1:15 p.m. for eligible options) on Tuesday, December 24, 2024. Crossing Session orders will be accepted beginning at 1:00 p.m. for continuous executions until 1:30 p.m. on these dates, and NYSE American Equities, NYSE Arca Equities, NYSE Chicago, and NYSE National late trading sessions will close at 5:00 pm. All times are Eastern Time.
+L92: 
+L93: NYSE Group Markets holidays and hours can be found at: cite33†https://www.nyse.com/markets/hours-calendars†www.nyse.com .
+L94: About NYSE Group
+L95: NYSE Group is a subsidiary of Intercontinental Exchange (NYSE: ICE), a leading global provider of data, technology and market infrastructure. NYSE Group’s equity exchanges -- the New York Stock Exchange, NYSE American, NYSE Arca, NYSE Chicago and NYSE National -- trade more U.S. equity volume than any other exchange group. The NYSE is the premier global venue for capital raising. NYSE Arca Options and NYSE Amex Options are leading equity options exchanges. To learn more, visit cite34†nyse.com†www.nyse.com .
+L96: About Intercontinental Exchange
+L97: cite35†Intercontinental Exchange, Inc.†www.ice.com (NYSE: ICE) is a Fortune 500 company that designs, builds and operates digital networks to connect people to opportunity. We provide financial technology and data services across major asset classes that offer our customers access to mission-critical workflow tools that increase transparency and operational efficiencies.
+L98: We operate cite36†exchanges†www.theice.com , including the cite2†New York Stock Exchange†www.nyse.com , and cite37†clearing houses†www.theice.com that help people invest, raise capital and manage risk across multiple asset classes. Our comprehensive fixed income cite38†data services†www.theice.com and execution capabilities provide information, analytics and platforms that help our customers capitalize on opportunities and operate more efficiently.
+L99: At cite39†ICE Mortgage Technology†www.theice.com , we are transforming and digitizing the U.S. residential mortgage process, from consumer engagement through loan registration. Together, we transform, streamline and automate industries to connect our customers to opportunity.
+L100: Trademarks of ICE and/or its affiliates include Intercontinental Exchange, ICE, ICE block design, NYSE and New York Stock Exchange. Information regarding additional trademarks and intellectual property rights of Intercontinental Exchange, Inc. and/or its affiliates is located cite40†here†www.intercontinentalexchange.com .
+L101: Key Information Documents for certain products covered by the EU Packaged Retail and Insurance-based Investment Products Regulation can be accessed on the relevant exchange website under the heading “Key Information Documents (KIDS).”

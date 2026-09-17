@@ -1,6 +1,39 @@
 # 05 Backlog and Roadmap - swingmachine
 
-## Active milestone
+## Active reset backlog — 8 September 2026
+
+The sponsor accepted the offline reset direction, requested an elaborated backlog
+and authorised work to begin. The active queue and task acceptance boundaries are
+in [SWING_RF_BACKLOG.md](SWING_RF_BACKLOG.md). RF-001 delivered the foundation;
+RF-002 delivered the shared input preflight, source contract and readiness
+catalogue. RF-003 daily/reference mechanics, RF-004 executable fills and RF-005
+numerical evaluation mechanics are implemented. Real daily data remains
+unqualified. Discovery, independent evaluation and operational qualification
+remain conditional on the outstanding evidence gates.
+See [RF-002 delivery](SWING-RF-002_INPUT_CONTRACT_AND_READINESS.md).
+
+Current goal checkpoint: RF-003 adapter/reference mechanics and Trading212
+calendar/reader adoption are delivered; real source qualification remains open.
+RF-004's executable minute engine and active CLI are implemented and verified:
+30 final execution/replay tests plus 133 existing focused regressions pass, and
+nine retained 60-session synthetic trials reconcile. See
+[RF-004 evidence](SWING-RF-004_EXECUTION_DESIGN.md).
+
+RF-005's numerical freeze, funded SPY benchmark, lagged-exposure diagnostic and
+joint block-bootstrap calculations are implemented; all 186 focused research
+tests pass. See [evaluation evidence](SWING-RF-005_EVALUATION_FREEZE.md).
+Next: specify the smallest real-source/reference qualification increment and
+resolve suitable independent date coverage. The calendar establishes only 283
+permitted-interval sessions after warmup; validation/final dates remain unassigned.
+The full three-objective goal remains active. Historical references, official
+decoder parity, clearing-calendar and fill qualification remain separate
+dependencies. See [Trading212 adoption](SWING-RF-003_TRADING212_ADOPTION.md).
+
+No candidate has been promoted and no trading gate is opened. The older roadmap
+below is historical context; its stop on new offline research is superseded for
+this sponsor-authorised reset.
+
+## Historical roadmap — pre-reset milestone
 
 Current milestone: close `SWING-PC-006` after both broader candidate families
 failed the preregistered discovery gate.

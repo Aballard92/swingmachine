@@ -1,0 +1,73 @@
+{
+  "task_id": "SWING-RF-005",
+  "version": 1,
+  "status": "NUMERICAL_RULES_FROZEN_PRE_HISTORICAL_OUTCOMES",
+  "plan_sha256": "78fcae1a714d73efea9e0866e0ab7c67db8f8e98f5bc75c6f9a38a95f8b8e139",
+  "execution_policy_sha256": "a9dc39fb5a73e4501f9fcfe78bf42c5806c6fa41b2594f7101ace9189238a20d",
+  "calendar_sha256": "d0b12e24e20ac5bb6c5f22709cffd69af79fc2549298c53d5a7db5fd29f3c2fd",
+  "families": ["momentum", "breakout", "reversal"],
+  "cost_bps_per_side": [5, 10, 20],
+  "selection_cost_bps": 10,
+  "stress_cost_bps": 20,
+  "signal_planning_cost_bps": 10,
+  "cash_rate": 0,
+  "annual_sessions": 252,
+  "warmup_sessions": 200,
+  "embargo_sessions": 20,
+  "entry_cohort_sessions": 20,
+  "partitions": {
+    "warmup": {"start": "2019-01-02", "end": "2019-10-16"},
+    "development": {"start": "2019-10-17", "end": "2020-11-30"},
+    "validation": null,
+    "final": null
+  },
+  "exposure_history": {
+    "prior_search_count": null,
+    "current_matrix_corrects_prior_search": false,
+    "known_touched": ["Swing pre-reset research", "Trading212 reused development history"],
+    "independent_window_established": false,
+    "provider_change_creates_independence": false
+  },
+  "bootstrap": {
+    "method": "STATIONARY_CIRCULAR_JOINT_MAX_CENTERED_MEAN",
+    "expected_block_sessions": [20, 40],
+    "replicates": 9999,
+    "seed": 20260907,
+    "alpha": 0.05,
+    "joint_series": 18,
+    "require_both_block_lengths": true
+  },
+  "gates": {
+    "min_sessions": 252,
+    "min_closed_lifecycles": 60,
+    "min_filled_symbols": 10,
+    "min_exposed_sessions": 126,
+    "min_entry_cohorts": 12,
+    "min_benchmark_share_fill_fraction": 0.95,
+    "max_accounting_residual_fraction": 0.000001,
+    "base_min_mean_r": 0.10,
+    "stress_min_mean_r": 0.0,
+    "base_min_sharpe": 0.75,
+    "base_max_drawdown": 0.10,
+    "stress_max_drawdown": 0.12,
+    "max_positive_symbol_pnl_share": 0.35,
+    "max_positive_quarter_pnl_share": 0.60,
+    "require_positive_net_return": true,
+    "require_positive_pnl_without_best_symbol": true,
+    "require_positive_pnl_without_best_quarter": true,
+    "require_base_sharpe_at_least_spy": true,
+    "require_positive_base_cash_and_exposure_lower_bounds": true,
+    "median_r_is_gate": false
+  },
+  "benchmarks": {
+    "symbol": "SPY",
+    "funded": "SINGLE_FIRST_SESSION_FIXED_LIMIT_BUY_AND_HOLD_NO_REINVESTMENT",
+    "exposure": "PRIOR_CLOSE_STRATEGY_WEIGHT_TIMES_FRICTIONLESS_SPY_TOTAL_RETURN",
+    "first_exposure_weight": 0,
+    "exposure_reference_is_executable": false,
+    "terminal_rule": "MARK_OPEN_POSITIONS_KEEP_UNSETTLED_AND_RECEIVABLES_NO_FORCED_SALE"
+  },
+  "candidate_ranking": ["worst_base_exposure_lower_bound_desc", "base_sharpe_desc", "family_asc"],
+  "historical_execution": "BLOCKED_PENDING_SOURCE_AND_PARTITION_QUALIFICATION",
+  "paper_live_promotion": "UNAVAILABLE"
+}

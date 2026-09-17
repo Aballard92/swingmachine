@@ -1,0 +1,22 @@
+{
+  "contract_version": 1,
+  "source_class": "HISTORICAL",
+  "start": "2019-01-02",
+  "end": "2020-11-30",
+  "evaluation_start": "2020-01-02",
+  "sessions": [],
+  "bars_path": "daily_bars.json",
+  "bars_sha256": null,
+  "adjustment_policy": "raw_with_explicit_splits_and_dividend_accrual",
+  "corporate_actions_complete": false,
+  "event_calendar_complete": false,
+  "session_calendar_complete": false,
+  "supporting_evidence": {
+    "session_calendar": null,
+    "corporate_actions": null,
+    "earnings_calendar": null,
+    "security_master": null,
+    "population_selection": null
+  },
+  "instructions": "Intentionally blocked template, not a qualified source. Dates illustrate the unprotected development interval and are not an experiment freeze. Populate the calendar, canonical bar bundle and five scoped evidence references under the RF-002 contract. Do not set completeness flags without the RF-003 evidence."
+}

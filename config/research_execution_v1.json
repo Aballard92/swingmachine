@@ -1,0 +1,9 @@
+{
+  "decision_minutes": 5,
+  "latency_minutes": 1,
+  "expiry_minutes": 15,
+  "participation": 0.001,
+  "tick": 0.01,
+  "settlement_days": 2,
+  "drawdown_stop": 0.10
+}

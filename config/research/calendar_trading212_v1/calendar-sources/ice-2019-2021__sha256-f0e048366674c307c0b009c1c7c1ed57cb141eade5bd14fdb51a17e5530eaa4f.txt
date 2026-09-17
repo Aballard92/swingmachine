@@ -1,0 +1,43 @@
+Intercontinental Exchange - NYSE Group Announces 2019, 2020 and 2021 Holiday and Early Closings Calendar (https://ir.theice.com/press/news-details/2018/NYSE-Group-Announces-2019-2020-and-2021-Holiday-and-Early-Closings-Calendar/default.aspx)
+citeturn4view0 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"https://ir.theice.com/press/news-details/2018/NYSE-Group-Announces-2019-2020-and-2021-Holiday-and-Early-Closings-Calendar/default.aspx","lineno":69}); Total lines: 124
+L0: [Input] [Input]
+L1: 
+L2: [Input] [Input] [Input]
+L3: 
+L4: cite0†Skip to main content L5: 
+L6:   * cite1†ICE†www.theice.com L7:   * cite2†NYSE†www.nyse.com L8:   * cite3†WebICE†www.theice.com cite4†Login†www.theice.com L9:   * cite5†Press L10:     * cite5†Corporate News Releases L11:     * cite6†View all Press Releases†www.ice.com L12:     * cite7†News Features & Awards L13:   * cite8†Events & Presentations L14:   * cite9†Financials L15:     * cite9†Quarterly Results L16:     * cite10†Annual Reports & Proxy L17:     * cite11†SEC Filings L18:   * cite12†Governance L19:     * cite12†Executive Management Team L20:     * cite13†Board of Directors & Committee Composition L21:     * cite14†Governance Overview L22:   * cite15†Investor Resources L23:     * cite15†Supplemental Information L24:     * cite16†Featured Podcasts L25:     * cite17†Stock Information L26:     * cite18†Corporate Actions L27:     * cite19†Investor FAQs L28:     * cite20†Investor Email Alerts L29:     * cite21†Investor Contacts L30:   * cite22†Corporate Citizenship†www.ice.com L31: [Input: Search] [Input]
+L32: 
+L33: [Button: Menu]
+L34: 
+L35: [Input: Search] [Input]
+L36:   * cite5†Press L37:     * cite5†Corporate News Releases L38:     * cite6†View all Press Releases†www.ice.com L39:     * cite7†News Features & Awards L40:   * cite8†Events & Presentations L41:   * cite9†Financials L42:     * cite9†Quarterly Results L43:     * cite10†Annual Reports & Proxy L44:       * cite23†2019 Letter to Shareholders L45:       * cite24†2020 Letter to Shareholders L46:       * cite25†2021 Letter to Shareholders L47:       * cite26†2022 Letter to Shareholders L48:       * cite27†2023 Letter to Shareholders L49:       * cite28†2024 Letter to Shareholders L50:       * cite29†2025 Letter to Shareholders L51:     * cite11†SEC Filings L52:   * cite12†Governance L53:     * cite12†Executive Management Team L54:     * cite13†Board of Directors & Committee Composition L55:     * cite14†Governance Overview L56:       * cite30†Governance & Charter Documents L57:       * cite31†Contact the Board L58:       * cite32†Advocacy & Collaboration L59:   * cite15†Investor Resources L60:     * cite15†Supplemental Information L61:     * cite16†Featured Podcasts L62:     * cite17†Stock Information L63:     * cite18†Corporate Actions L64:     * cite19†Investor FAQs L65:     * cite20†Investor Email Alerts L66:     * cite21†Investor Contacts L67:   * cite22†Corporate Citizenship†www.ice.com L68: cite5†View all news L69: ### NYSE Group Announces 2019, 2020 and 2021 Holiday and Early Closings Calendar
+L70: 
+L71: Dec 04, 2018
+L72: 
+L73: NYSE Group Announces 2019, 2020 and 2021 Holiday and Early Closings Calendar
+L74: NEW YORK--(BUSINESS WIRE)-- NYSE Group announced today the 2021 holiday calendar and early closing dates for its cash equity markets: New York Stock Exchange, NYSE American, NYSE Arca Equities, NYSE National, and Chicago Stock Exchange, as well as the NYSE American Options, NYSE Arca Options and NYSE Bonds markets. The 2019 and 2020 holiday and early closing dates are also set forth below.
+L75:  |    |  |    |  |    |
+L76: HOLIDAY  |    | 2019  |    | 2020  |    | 2021
+L77: New Year’s Day  |    | Tuesday, January 1  |    | Wednesday, January 1  |    | Friday, January 1
+L78: Martin Luther King, Jr. Day  |    | Monday, January 21  |    | Monday, January 20  |    | Monday, January 18
+L79: Washington's Birthday  |    | Monday, February 18  |    | Monday, February 17  |    | Monday, February 15
+L80: Good Friday  |    | Friday, April 19  |    | Friday, April 10  |    | Friday, April 2
+L81: Memorial Day  |    | Monday, May 27  |    | Monday, May 25  |    | Monday, May 31
+L82: Independence Day  |    | Thursday, July 4*  |    | Friday, July 3 (July 4 holiday observed)  |    | Monday, July 5 (July 4 holiday observed)
+L83: Labor Day  |    | Monday, September 2  |    | Monday, September 7  |    | Monday, September 6
+L84: Thanksgiving Day  |    | Thursday, November 28**  |    | Thursday, November 26**  |    | Thursday, November 25**
+L85: Christmas Day  |  | Wednesday, December 25***  |  | Friday, December 25***  |  | Friday, December 24 (Christmas holiday observed)
+L86: * Each market will close early at 1:00 p.m. (1:15 p.m. for eligible options) on Wednesday, July 3, 2019. Crossing Session orders will be accepted beginning at 1:00 p.m. for continuous executions until 1:30 p.m. on this date, and NYSE American Equities, NYSE Arca Equities, and NYSE National late trading sessions will close at 5:00 pm. All times are Eastern Time.
+L87: ** Each market will close early at 1:00 p.m. (1:15 p.m. for eligible options) on Friday, November 29, 2019, Friday, November 27, 2020, and Friday, November 26, 2021 (the day after Thanksgiving). Crossing Session orders will be accepted beginning at 1:00 p.m. for continuous executions until 1:30 p.m. on these dates, and NYSE American Equities, NYSE Arca Equities, and NYSE National late trading sessions will close at 5:00 pm. All times are Eastern Time.
+L88: *** Each market will close early at 1:00 p.m. (1:15 p.m. for eligible options) on Tuesday, December 24, 2019, and Thursday, December 24, 2020. Crossing Session orders will be accepted beginning at 1:00 p.m. for continuous executions until 1:30 p.m. on this date, and NYSE American Equities, NYSE Arca Equities, and NYSE National late trading sessions will close at 5:00 pm. All times are Eastern Time.
+L89: NYSE Group Markets holidays and hours can be found at: cite33†https://www.nyse.com/markets/hours-calendars†www.nyse.com .
+L90: 
+L91: About NYSE Group
+L92: NYSE Group is a subsidiary of Intercontinental Exchange (NYSE:ICE), a leading operator of global exchanges and clearing houses, and a provider of data and listings services. NYSE Group’s equity exchanges -- the New York Stock Exchange, NYSE American, NYSE Arca and NYSE National -- trade more U.S. equity volume than any other exchange group. The NYSE is the premier global venue for capital raising, leading worldwide in IPOs, including technology IPOs.
+L93: NYSE Arca Options and NYSE Amex Options are leading equity options exchanges. To learn more, visit cite34†www.nyse.com/index†www.nyse.com .
+L94: About Intercontinental Exchange
+L95: cite35†Intercontinental Exchange†www.intercontinentalexchange.com (NYSE: ICE) is a Fortune 500 and Fortune Future 50 company formed in the year 2000 to modernize markets. ICE serves customers by operating the cite36†exchanges†www.theice.com , cite37†clearing houses†www.theice.com and information services they rely upon to invest, trade and manage risk across global financial and commodity markets.
+L96: A leader in market data, cite38†ICE Data Services†www.theice.com serves the information and connectivity needs across virtually all asset classes. As the parent company of the cite39†New York Stock Exchange†www.nyse.com , the company raises more capital than any other exchange in the world, driving economic growth and transforming markets.
+L97: Trademarks of ICE and/or its affiliates include Intercontinental Exchange, ICE, ICE block design, NYSE and New York Stock Exchange. Information regarding additional trademarks and intellectual property rights of Intercontinental Exchange, Inc. and/or its affiliates is located at cite40†http://www.intercontinentalexchange.com/terms-of-use†www.intercontinentalexchange.com .
+L98: Key Information Documents for certain products covered by the EU Packaged Retail and Insurance-based Investment Products Regulation can be accessed on the relevant exchange website under the heading “Key information Documents (KIDS).”
+L99: Safe Harbor Statement under the Private Securities Litigation Reform Act of 1995 -- Statements in this press release regarding ICE's business that are not historical facts are "forward-looking statements" that involve risks and uncertainties.
