@@ -2,6 +2,57 @@
 
 This is a consolidated decision log for ChatGPT Project context. It is not a full ADR archive.
 
+## Sponsor reset decisions — 7 September 2026
+
+The sponsor requested a fresh offline strategy review, research implementation
+and tests with Codex in charge, then accepted the direction and asked to elaborate
+the backlog and begin work. The local active queue is
+[SWING_RF_BACKLOG.md](SWING_RF_BACKLOG.md). This supersedes earlier statements
+that no new offline implementation task is authorised. It does not reopen
+protected holdouts, acquire data, activate runtime/brokers, select a candidate or
+authorise paper/live/deployment or GitHub writes.
+
+RF-002 implements shared source preflight and records the actual local readiness
+gaps. A structural pass is deliberately distinct from historical qualification;
+references need semantic validation through RF-003. Prior intraday admission and
+HF static metadata cannot be accepted as daily swing reference completeness.
+The next offline boundaries are data/reference joins, executable order timing
+and a frozen experiment design before historical strategy outcomes.
+See [RF-002 evidence](SWING-RF-002_INPUT_CONTRACT_AND_READINESS.md).
+
+The sponsor subsequently directed review/adoption of Trading212's Databento work.
+The relevant September branch is `t212-ier-edge-003a` at `eddd6d8`; the XR-001
+August checkout was insufficient to assess the newer calendar and qualification
+work. Adopt its pinned official calendar/captures, independently verified table
+reconstruction, isolated byte reader and pre-I/O source-month boundary guard.
+Retain exact upstream hashes. Reuse the V3 FB/META source-dependency correction;
+do not import intraday coverage rules, five-year sparsity exclusions, unresolved
+discontinuity flags as corporate actions, or campaign outcomes. This closes the
+calendar discovery gap, not historical swing qualification. See
+[RF-003 Trading212 adoption](SWING-RF-003_TRADING212_ADOPTION.md).
+
+RF-004 replaces the active daily simulation path with fixed-limit minute replay.
+All signal bars must reconcile to the minute/reference inputs before strategy
+construction. Quantity/limit decisions follow five completed opening minutes;
+sale proceeds and unpaid distributions cannot finance new entries. Partial-entry
+fills are accounted for before an ambiguous later intrabar stop, preventing
+retrospective cancellation bias. The earlier model is retained only as the named
+`simulate-daily-fixture` command. Synthetic conformance does not grant historical,
+broker or trading qualification.
+
+On 8 September, RF-005 completes numerical freeze and synthetic implementation
+verification. The fixed nine trials use a common 10 bps signal-planning cost,
+with 5/10/20 bps actual execution costs; this explicitly supersedes the earlier
+fixture's scenario-dependent target geometry. Selection is at 10 bps and must
+also pass 20 bps stress. Funded SPY receives the same cash, timing, fill-capacity
+and cost assumptions; lagged exposure is a separately labelled frictionless
+diagnostic. Joint stationary-block inference covers 18 paired series with both
+20- and 40-session expected lengths, not the unknown pre-reset search history.
+The byte-pinned spec cannot silently change plan, policy or calendar. The complete
+focused suite passes 186 tests. See [RF-005](SWING-RF-005_EVALUATION_FREEZE.md).
+Numerical freeze does not release historical execution: real reference/decoder
+qualification and independent validation/final date assignments remain open.
+
 ## Current controlling decisions
 
 | Decision | Status | Rationale | Source context |

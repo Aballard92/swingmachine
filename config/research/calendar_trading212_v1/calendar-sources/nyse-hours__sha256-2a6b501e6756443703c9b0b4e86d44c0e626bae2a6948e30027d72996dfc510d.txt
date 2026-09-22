@@ -1,0 +1,213 @@
+Holidays & Trading Hours (https://www.nyse.com/trade/hours-calendars)
+citeturn4view2 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"https://www.nyse.com/trade/hours-calendars","lineno":33}); Total lines: 246
+L0: cite0†Trading at NYSE /Holidays & Trading Hours
+L1: 
+L2: # Holidays & Trading Hours
+L3: 
+L4: ####
+L5: 
+L6: * * *
+L7: #### All NYSE markets observe U.S. holidays as listed below for 2026, 2027, and 2028.
+L8: 
+L9: cite1†Trading Days L10: 
+L11: cite2†Trading Hours L12: Holiday  | 2026  | 2027  | 2028
+L13: --- | --- | --- | ---
+L14: New Year’s Day  | Thursday, January 1  | Friday, January 1  | —*
+L15: Martin Luther King, Jr. Day  | Monday, January 19  | Monday, January 18  | Monday, January 17
+L16: Washington's Birthday  | Monday, February 16  | Monday, February 15  | Monday, February 21
+L17: Good Friday  | Friday, April 3  | Friday, March 26  | Friday, April 14
+L18: Memorial Day  | Monday, May 25  | Monday, May 31  | Monday, May 29
+L19: Juneteenth National Independence Day  | Friday, June 19  | Friday, June 18 (Juneteenth National Independence Day observed)  | Monday, June 19
+L20: Independence Day  | Friday, July 3 (Independence Day observed)  | Monday, July 5 (Independence Day observed)  | Tuesday, July 4**
+L21: Labor Day  | Monday, September 7  | Monday, September 6  | Monday, September 4
+L22: Thanksgiving Day  | Thursday, November 26***  | Thursday, November 25***  | Thursday, November 23***
+L23: Christmas Day  | Friday, December 25****  | Friday, December 24 (Christmas Day observed)  | Monday, December 25
+L24: * Because the holiday falls on Saturday, January 1, 2028, no New Year’s Day holiday is observed.
+L25: 
+L26: ** Each market will close early at 1:00 p.m. (1:15 p.m. for eligible options) on Monday, July 3, 2028. NYSE American Equities, NYSE Arca Equities, NYSE National, and NYSE Texas late trading sessions will close at 5:00 p.m. All times are Eastern Time.
+L27: *** Each market will close early at 1:00 p.m. (1:15 p.m. for eligible options) on Friday, November 27, 2026, Friday, November 26, 2027, and Friday, November 24, 2028 (the day after Thanksgiving). NYSE American Equities, NYSE Arca Equities, NYSE National, and NYSE Texas late trading sessions will close at 5:00 p.m. All times are Eastern Time.
+L28: **** Each market will close early at 1:00 p.m. (1:15 p.m. for eligible options) on Thursday, December 24, 2026. NYSE American Equities, NYSE Arca Equities, NYSE National, and NYSE Texas late trading sessions will close at 5:00 p.m. All times are Eastern Time.
+L29: ###
+L30: 
+L31: * * *
+L32: 
+L33: ### Trading Hours
+L34: 
+L35: NYSE
+L36: 
+L37: ###### Tape A
+L38: 
+L39: ####
+L40: 
+L41: Pre-Opening Session: 6:30 a.m. ET
+L42: Orders can be entered and will be queued until the Opening Auction at 9:30 a.m. ET
+L43: 
+L44: * * *
+L45: 
+L46: Core Trading Session: 9:30 a.m. to 4:00 p.m. ET
+L47: 9:30 a.m. ET - Core Open Auction
+L48: 3:50 p.m. to 4:00 p.m. ET - Closing Imbalance Period
+L49: 4:00 p.m. ET - Closing Auction
+L50: 
+L51: ###### Tapes B & C
+L52: ####
+L53: 
+L54: Pre-Opening Session: 6:30 a.m. ET
+L55: Orders can be entered and will be queued until 7:00 a.m. ET
+L56: 
+L57: * * *
+L58: 
+L59: Early Trading Session: 7:00 a.m. to 9:30 a.m. ET
+L60: 
+L61: * * *
+L62: 
+L63: Core Trading Session: 9:30 a.m. to 4:00 p.m. ET
+L64: 
+L65: NYSE American
+L66: 
+L67: Pre-Opening Session: 6:30 a.m. ET
+L68: Orders can be entered and will be queued until the Early Open Auction at 7:00 a.m. ET*
+L69: 
+L70: * * *
+L71: 
+L72: Early Trading Session: 7:00 a.m. to 9:30 a.m. ET
+L73: 
+L74: 6:59 a.m. to 7:00 a.m. ET - Early Open Auction Imbalance Freeze Period
+L75: 7:00 a.m. ET - Early Open Auction
+L76: 
+L77: 9:29 a.m. ET - MOO/LOO Cancellation Cutoff
+L78: 
+L79: 9:29:55 a.m. to 9:30 a.m. ET - Core Open Auction Imbalance Freeze Period
+L80: 
+L81: * * *
+L82: 
+L83: Core Trading Session: 9:30 a.m. to 4:00 p.m. ET
+L84: 9:30 a.m. ET - Core Open Auction
+L85: 3:50 p.m. to 4:00 p.m. ET - Closing Auction Imbalance Freeze Period
+L86: 4:00 p.m. ET - Closing Auction
+L87: 
+L88: * * *
+L89: 
+L90: Late Trading Session: 4:00 p.m. to 8:00 p.m. ET
+L91: 
+L92: * Auctions are conducted only in auction-eligible symbols.
+L93: 
+L94: NYSE Arca Equities
+L95: Pre-Opening Session: 2:30 a.m. ET
+L96: Orders can be entered and will be queued until the Early Open Auction at 4:00 a.m. ET*
+L97: 
+L98: * * *
+L99: 
+L100: Early Trading Session: 4:00 a.m. to 9:30 a.m. ET
+L101: 3:59 a.m. to 4:00 a.m. ET - Early Open Auction Imbalance Freeze Period
+L102: 4:00 a.m. ET - Early Open Auction
+L103: 9:29 a.m. ET - MOO/LOO Cancellation Cutoff
+L104: 
+L105: 9:29:55 a.m. to 9:30 a.m. ET - Core Open Auction Imbalance Freeze Period
+L106: 
+L107: * * *
+L108: Core Trading Session: 9:30 a.m. to 4:00 p.m. ET
+L109: 9:30 a.m. ET - Core Open Auction
+L110: 3:59 p.m. to 4:00 p.m. ET - Closing Auction Imbalance Freeze Period
+L111: 4:00 p.m. ET - Closing Auction
+L112: 
+L113: * * *
+L114: 
+L115: Late Trading Session: 4:00 p.m. to 8:00 p.m. ET
+L116: 
+L117: * Auctions are conducted only in auction-eligible symbols.
+L118: 
+L119: NYSE National
+L120: 
+L121: Pre-Opening Session: 6:30 a.m. ET
+L122: Orders can be entered and will be queued until 7 a.m. ET
+L123: 
+L124: * * *
+L125: 
+L126: Early Trading Session: 7:00 a.m. to 9:30 a.m. ET
+L127: 
+L128: * * *
+L129: Core Trading Session: 9:30 a.m. to 4:00 p.m. ET
+L130: 
+L131: * * *
+L132: 
+L133: Late Trading Session: 4:00 p.m. to 8:00 p.m. ET
+L134: 
+L135: NYSE Texas
+L136: 
+L137: Pre-Opening Session: 6:30 a.m. ET
+L138: Orders can be entered and will be queued until the Early Open Auction at 7:00 a.m. ET*
+L139: 
+L140: * * *
+L141: 
+L142: Early Trading Session: 7:00 a.m. to 9:30 a.m. ET
+L143: 
+L144: 6:59 a.m. to 7:00 a.m. ET - Early Open Auction Imbalance Freeze Period
+L145: 
+L146: 7:00 a.m. ET - Early Open Auction
+L147: 
+L148: 9:29 a.m. ET - MOO/LOO Cancellation Cutoff
+L149: 9:29:55 a.m. to 9:30 a.m. ET - Core Open Auction Imbalance Freeze Period
+L150: 
+L151: * * *
+L152: 
+L153: Core Trading Session: 9:30 a.m. to 4:00 p.m. ET
+L154: 9:30 a.m. ET - Core Open Auction
+L155: 3:59 p.m. to 4:00 p.m. ET - Closing Auction Imbalance Freeze Period
+L156: 4:00 p.m. ET - Closing Auction
+L157: 
+L158: * * *
+L159: 
+L160: Late Trading Session: 4:00 p.m. to 8:00 p.m. ET
+L161: 
+L162: * Auctions are conducted only in auction-eligible symbols.
+L163: 
+L164: Options
+L165: 
+L166: Pre-Opening Session: 6:00 a.m. ET
+L167: Orders and Quote can be entered and will be queued until 9:30 a.m. ET
+L168: 
+L169: * * *
+L170: Core Trading Session: 9:30 a.m. to 4:00/4:15 p.m. ET
+L171: 4:15 p.m. Options Late Close Exceptions:
+L172: 
+L173:   * cite3†American Options L174:   * cite4†Arca Options L175: 
+L176: Bonds
+L177: 
+L178: Early Trading*
+L179: 
+L180: 4:00 a.m. ET — 8:00 a.m. ET
+L181: 
+L182: * * *
+L183: 
+L184: Core Trading*
+L185: 
+L186: 8:00 a.m. ET — 5:00 p.m. ET
+L187: 
+L188: * * *
+L189: 
+L190: Late Trading
+L191: 
+L192: 5:00 p.m. ET — 8:00 p.m. ET
+L193: 
+L194: *Auctions
+L195: NYSE Bonds conducts two daily bond auctions – an Opening Bond Auction at 4:00 a.m. ET and a Core Bond Auction at 8:00 a.m. ET. Orders not executed in either auction become eligible for continuous trading immediately after the auction.
+L196: 
+L197:   *   *   *   *   *   * ##### Listings
+L198: 
+L199:   * cite5†What to List L200:   * cite6†How to List L201:   * cite7†Listing Process L202:   * cite8†Listing Resources L203:   * cite9†Exchange Traded Products L204: ##### Global Advisory
+L205: 
+L206:   * cite10†Sustainability Resource Center L207:   * cite11†NYSE Board Services L208:   * cite12†NYSE Connect L209:   * cite13†Investor Access L210:   * cite14†Corporate Services L211: 
+L212: ##### About
+L213: 
+L214:   * cite15†Our History L215:   * cite16†The Bell L216:   * cite17†Media Center L217:   * cite18†Behind the Scenes L218:   * cite19†Events L219:   * cite20†Careers†careers.ice.com L220: 
+L221: ##### Data
+L222: 
+L223:   * cite21†Trading and Data Information L224:   * cite22†NYSE Data Products L225:   * cite23†Equity Index Data†www.ice.com L226:   * cite24†Data Policies, Contracts & Guidelines L227: ##### Resources
+L228: 
+L229:   * cite25†NYSE Community L230:   * cite26†Recent Public Debuts L231:   * cite27†Insights L232:   * cite28†Listing Manager L233:   * cite29†Regulation L234:   * cite30†Pillar Trading System L235:   * cite31†ICE Global Network†www.ice.com L236:   * cite32†Widget Library†www.ice.com L237: 
+L238:   * cite33†Privacy & Security Center†www.ice.com L239:   * cite34†Your Choices†www.ice.com L240:   * cite35†Terms of Use†www.ice.com L241:   * Do Not Sell My Personal Information
+L242: 
+L243: © 2026 Intercontinental Exchange, Inc.
+L244: 
+L245: cite36†GTM†www.googletagmanager.com 

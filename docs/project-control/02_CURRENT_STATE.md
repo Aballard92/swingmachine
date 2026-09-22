@@ -1,5 +1,58 @@
 # 02 Current State - swingmachine
 
+## Active update — 8 September 2026
+
+The sponsor authorised a fresh offline research reset led by Codex, accepted the
+elaborated [active backlog](SWING_RF_BACKLOG.md), and subsequently requested
+adoption of Trading212's newer Databento work. The continuing goal is daily-data
+and reference joins, executable orders/fills, and frozen evaluation criteria.
+Local implementation/checks are authorised by the
+[RF-003–005 contract](SWING-RF-003_005_IMPLEMENTATION_CONTRACT.md). Historical
+holdouts, provider/broker/runtime, paper/live and GitHub-write gates remain closed.
+
+RF-001 delivered the initial offline foundation. RF-002 delivered shared source
+preflight and the readiness catalogue. RF-003's streaming daily adapter and six
+reference-table joins are implemented; historical source qualification remains
+open. [Trading212 adoption](SWING-RF-003_TRADING212_ADOPTION.md) added the pinned
+official-source calendar, isolated DBN reader and source-month guard from the
+September worktree at `eddd6d8`. Its prior intraday/five-year sparsity exclusions
+are not swing eligibility. See [adapter evidence](SWING-RF-003_DAILY_ADAPTER.md).
+
+RF-004 now has an executable-intent minute engine and active `simulate` integration.
+Orders are fixed after five completed opening minutes, share cash/risk reservations,
+and model capacity-limited fills, expiry/cancel/reject paths, adverse stop ordering,
+settlement, distributions and splits. The active command reconciles signal bars
+to the execution minutes/references. The legacy engine is only
+`simulate-daily-fixture`. [RF-004 implementation and evidence](SWING-RF-004_EXECUTION_DESIGN.md)
+records 30 final execution/replay tests and 133 existing focused regressions passing.
+Nine retained 60-session synthetic trials produce 158 intents and 727 fills with
+accounting residual below 5.10e-11. No historical strategy outcomes were calculated.
+
+RF-005 now freezes nine family/cost trials, common 10 bps signal planning,
+numerical gates, cash/funded-SPY/lagged-exposure comparisons and joint stationary
+block inference across 18 series. All 186 focused research tests pass on the
+integrated implementation. The plan, execution policy and calendar are hash-bound;
+synthetic or unqualified evidence cannot select a candidate. See
+[evaluation freeze and evidence](SWING-RF-005_EVALUATION_FREEZE.md).
+
+The adopted calendar contains 483 permitted-interval sessions through November
+2020; 283 remain after warmup. Development is 17 October 2019–30 November 2020,
+subject to source qualification. Validation and final dates remain unassigned;
+Trading212's touched development and unknown prior search history are recorded
+separately from neutral source audits. The next acceptance work is a bounded
+real-source/reference qualification plan and suitable independent date assignment.
+The full three-objective goal remains active while those requirements are open.
+
+No profitable strategy has been established or selected. Calendar metadata is now
+available; complete corporate-action/payment/terminal facts, earnings, historical
+security/population and clearing-calendar inputs still need qualification. Official
+vendor-decoder parity and real fill/quote assumptions remain unqualified. The CLI
+continues to block historical strategy testing pending RF-003/RF-005 conditions.
+
+The sections below preserve the pre-reset research state. Their statement that
+no new offline research task is authorised is superseded for the sponsor-approved
+reset backlog; their external-action and qualification gates remain in force.
+
 ## Current operational status
 
 Current state is research/offline qualification only.
